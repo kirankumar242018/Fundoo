@@ -11,6 +11,6 @@ export class UserService {
     return this.http.postRequest(url,body);
   }
   loginService(url,body){
-    return this.http.postRequest(url,body);
+    return this.http.post(url,body);
   }
 }

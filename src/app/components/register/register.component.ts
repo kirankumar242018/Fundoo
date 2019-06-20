@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   messages_1 = '';
   
   firstName = new FormControl('',[Validators.required,Validators.maxLength(20),Validators.minLength(3)]);
-  lastName = new FormControl('',[Validators.required,Validators.maxLength(20)]);
+  lastName = new FormControl('',[Validators.required,Validators.maxLength(20),Validators.minLength(3)]);
   userName = new FormControl('',[Validators.required,Validators.email]);
   password = new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(16)]);
   confirmPassword = new FormControl('',[Validators.required,Validators.maxLength(16),Validators.minLength(6)]);
@@ -71,8 +71,8 @@ export class RegisterComponent implements OnInit {
     console.log(field_content);
     if(this.password.value == this.confirmPassword.value)
     {
-      this.UserService.registerService('user/userSignup',field_content).subscribe(data =>{
-        console.log(field_content)
+      this.UserService.registerService('user/userSignUp',field_content).subscribe(data =>{
+        console.log(data,"register data")
         this.snackBar.open("Registered Successfully..","close", {
           duration: 3000,
         });

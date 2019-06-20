@@ -5,7 +5,10 @@ import {FormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 @NgModule({
 imports: [MatButtonModule,
     MatToolbarModule,
@@ -13,7 +16,11 @@ imports: [MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonToggleModule
 
 ],
 exports: [MatButtonModule,
@@ -22,7 +29,11 @@ exports: [MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonToggleModule
 ],
  
 })

@@ -13,8 +13,18 @@ export class HttpService {
   postRequest(url,data)
   {
     let header = new HttpHeaders({
-      'accept': 'application/json',
-      'Authorization': localStorage.getItem('token')
+      'Accept': 'application/json',
+      // 'Authorization': localStorage.getItem('token')
+    });
+    console.log("data");
+    return this.http.post(this.link+url,data,{headers:header});
+  }
+
+post(url,data)
+  {
+    let header = new HttpHeaders({
+      'Accept': 'application/json',
+      // 'Authorization': localStorage.getItem('token')
     });
     console.log("data");
     return this.http.post(this.link+url,data,{headers:header});
