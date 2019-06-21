@@ -20,7 +20,7 @@ export class HttpService {
     return this.http.post(this.link+url,data,{headers:header});
   }
 
-post(url,data)
+  post(url,data)
   {
     let header = new HttpHeaders({
       'Accept': 'application/json',

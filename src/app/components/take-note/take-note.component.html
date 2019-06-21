@@ -1,0 +1,28 @@
+<div class="main" fxFlex=100 >
+  <mat-card class="create-note" fxFlexOffset="25" fxFlex=60  >
+      <div *ngIf="!isOpen" (click)='isOpen=true'  >
+        <p>Take a Note..</p>
+      </div>
+      <div *ngIf='isOpen'  >
+            <div class="title" >
+              <input matInput type="text" placeholder="Title" style=" border:none transparent; outline:none; font-size: 18px; font-family: sans-serif;" >
+            </div>
+            <div class="description" >
+                <textarea  type="text" placeholder="Take a Note.." style="padding:0; border:none transparent; outline:none; font-size: 18px;" ></textarea>
+            </div>
+            
+          
+          <div>
+            <div fxLayoutAlign="start center" fxLayoutGap="10px" >
+              <div>
+                  <app-icon></app-icon>
+
+              </div>  
+                <button type="text" fxFlexOffset="45" (click)="isOpen=false" fxLayoutAlign="end center" style="padding: 0;border: none; background: none; font-size: 18px"  >Close</button>
+
+            </div>
+          </div>
+    </div>
+  </mat-card>
+  
+</div>
