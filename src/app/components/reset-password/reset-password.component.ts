@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from './../../service/UserService/user.service';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -16,7 +17,7 @@ export class ResetPasswordComponent implements OnInit {
   password = new FormControl('',[Validators.required,Validators.maxLength(15),Validators.minLength(6)]);
   confirmPassword = new FormControl('',[Validators.required,Validators.maxLength(15),Validators.minLength(6)]);
   
-  constructor(private httpService:HttpService,public router:Router,private snackBar: MatSnackBar,private route:ActivatedRoute ) {
+  constructor(private UserService:UserService,public router:Router,private snackBar: MatSnackBar,private route:ActivatedRoute ) {
     const token: string = route.snapshot.params["token"];
     localStorage.setItem('token',token)
     console.log(token);
@@ -49,7 +50,7 @@ export class ResetPasswordComponent implements OnInit {
     console.log(field_content);
     if(this.password.value == this.confirmPassword.value)
     {
-      this.httpService.postRequest('user/reset-password',field_content).subscribe(data =>{
+      this.UserService.resetService('user/reset-password',field_content).subscribe(data =>{
         // console.log(field_content)
         this.snackBar.open("Reset-Password Successfully Done..","close", {
           duration: 3000,

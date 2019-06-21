@@ -8,9 +8,15 @@ export class UserService {
   constructor(private http:HttpService) { }
 
   registerService(url,body){
-    return this.http.postRequest(url,body);
+    return this.http.post(url,body,false);
   }
   loginService(url,body){
-    return this.http.post(url,body);
+    return this.http.post(url,body,false);
+  }
+  resetService(url,body){
+    return this.http.post(url,body,true);
+  }
+  forgotService(url,body){
+    return this.http.post(url,body,false);
   }
 }

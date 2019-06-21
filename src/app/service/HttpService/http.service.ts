@@ -10,23 +10,15 @@ export class HttpService {
   static postRequest: any;
   constructor(private http: HttpClient) { }
   link = environment.baseUrl;
-  postRequest(url,data)
-  {
-    let header = new HttpHeaders({
-      'Accept': 'application/json',
-      // 'Authorization': localStorage.getItem('token')
-    });
-    console.log("data");
-    return this.http.post(this.link+url,data,{headers:header});
-  }
 
-  post(url,data)
+
+  post(url,data,isTokenReq)
   {
     let header = new HttpHeaders({
       'Accept': 'application/json',
-      // 'Authorization': localStorage.getItem('token')
+      'Authorization': localStorage.getItem('token')
     });
     console.log("data");
-    return this.http.post(this.link+url,data,{headers:header});
+    return this.http.post(this.link+url,data,isTokenReq?{headers:header}:{});
   }
 }

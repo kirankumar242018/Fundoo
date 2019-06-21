@@ -19,7 +19,7 @@
       <div>
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>username</mat-label>
-          <input matInput name="userName" [formControl]="userName" required>
+          <input matInput name="userName" [formControl]="userName" autocomplete="off" required>
           <mat-error *ngIf="userName.invalid">
             {{userNameErrorMessage()}}
           </mat-error>

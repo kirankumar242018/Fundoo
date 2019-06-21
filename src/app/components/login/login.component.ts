@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   password = new FormControl('',[Validators.required,Validators.maxLength(16),Validators.minLength(6)]);
 
 
-  constructor(private httpService:UserService,public router:Router ,private snackBar: MatSnackBar) { }
+  constructor(private userService:UserService,public router:Router ,private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
     }
 
     console.log(field_contents);
-    this.httpService.loginService('user/login',field_contents).subscribe(data =>{
+    this.userService.loginService('user/login',field_contents).subscribe(data =>{
       localStorage.setItem('token',data['id']);
       console.log(field_contents)
       

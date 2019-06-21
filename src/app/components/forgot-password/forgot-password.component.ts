@@ -3,6 +3,7 @@ import { HttpService } from '../../service/HttpService/http.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { UserService } from './../../service/UserService/user.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -19,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
   userName = new FormControl('',[Validators.required,Validators.email]);
 
 
-  constructor(private httpService:HttpService,public router:Router,private snackBar: MatSnackBar) { }
+  constructor(private userService:UserService,public router:Router,private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -35,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
       "email":this.userName.value
     }
     console.log(field_content);
-    this.httpService.postRequest('user/reset',field_content).subscribe(data =>{
+    this.userService.forgotService('user/reset',field_content).subscribe(data =>{
       console.log(field_content)
       this.snackBar.open("Link has been sent to enterred email address for reseting password..","close", {
         duration: 3000,
