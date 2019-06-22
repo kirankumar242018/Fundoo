@@ -1,24 +1,41 @@
 .main{
     margin-left: 17px;
+    margin-top:45px;
 
-    margin-top:25px;
-    width:100%;
-    height:75%;
+    
 }
+.note-card{
+    max-height:75%;
+    max-width:60%;
 
+}
+.heading{
+    display: inline-block;
+    margin: 0;
+
+    font-size: 18px; 
+    font-family: sans-serif;
+}
 .title{
     border:none transparent;
     outline: none;
     font-size: 32px;
-    size:40; 
+    size:70; 
     width:48; 
     height:48;
     width:100%;
     max-width: 100%;
+    margin-bottom: 15px;
 }
 .description{
     border:none transparent;
     outline: none;
     width: 100%;
+    margin-bottom: 15px;
+
+
+}
+.icon{
+    margin-bottom: 10px;
 
 }

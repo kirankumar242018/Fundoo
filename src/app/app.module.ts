@@ -15,6 +15,10 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { IconComponent } from './components/icon/icon.component';
+import {AuthGuard} from './service/auth/auth.guard';
+import {AuthserviceService} from './service/auth_servive/authservice.service';
+import { NoteComponent } from './components/note/note.component'
+
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import { IconComponent } from './components/icon/icon.component';
     ResetPasswordComponent,
     TakeNoteComponent,
     IconComponent,
+    NoteComponent,
     
   ],
   imports: [
@@ -40,7 +45,7 @@ import { IconComponent } from './components/icon/icon.component';
 
 
   ],
-  providers: [],
+  providers: [AuthGuard,AuthserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,27 +1,36 @@
 <div class="main" fxFlex=100 >
-  <mat-card fxFlexOffset="25" fxFlex=60  >
-      <div *ngIf="!isOpen" (click)='isOpen=true'  >
+  <mat-card fxLayout="column" fxLayoutAlign="center center"  fxLayoutAlign.xs="center center" fxLayoutAlign.md="center center" fxLayoutAlign.sm="center center" class="note-card" fxFlex=50 fxFlex.md=80 fxFlex.sm=55 fxFlex.xs=100 >
+      <div *ngIf="!isOpen" (click)='isOpen=true' class="heading"  fxLayout="row" fxLayoutAlign="center center"  >
         <h5>Take a Note..</h5>
+          <!-- <button mat-icon-button (click)="snav.toggle()" >
+            <mat-icon>insert_photo</mat-icon>
+          </button>
+         -->
+       
       </div>
-      <div *ngIf='isOpen'  >
+      <div >
+        
+      </div>
+      <div *ngIf='isOpen' style="width: 100%;"  >
             <div class="title" >
               <input matInput type="text" placeholder="Title" style=" border:none transparent; outline:none; font-size: 18px; font-family: sans-serif;" >
             </div>
             <div class="description" >
                 <!-- <textarea  type="text" placeholder="Take a Note.." style="padding:0; border:none transparent; outline:none; font-size: 18px;" ></textarea> -->
-                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"  placeholder="Take a Note.." style="width:100%; border:none transparent;
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"  placeholder="Take a Note.." style=" border:none transparent;
                 outline: none;" ></textarea>
             </div>
             
           
           <div>
-            <div fxLayoutAlign="start center" fxLayoutGap="10px" >
-              <div>
+            <div fxLayout="row" fxLayoutAlign="space-between center"   >
+              <div class="icon" >
                   <app-icon></app-icon>
 
-              </div>  
-                <button type="text" fxFlexOffset="15" (click)="isOpen=false" fxLayoutAlign="end center" style="padding: 0;border: none; background: none; font-size: 18px"  >Close</button>
-
+              </div> 
+              <div> 
+                <button type="text"  (click)="isOpen=false" fxLayoutAlign="end center" style="padding: 0;border: none; background: none; font-size: 18px"  >Close</button>
+              </div>
             </div>
           </div>
     </div>
