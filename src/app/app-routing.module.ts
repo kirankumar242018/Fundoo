@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import {AuthGuard} from './service/auth/auth.guard';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
+import { NoteComponent } from './components/note/note.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },

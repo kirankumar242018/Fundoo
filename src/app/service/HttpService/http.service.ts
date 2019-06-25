@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
+import { encode } from 'punycode';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,27 @@ export class HttpService {
 
   post(url,data,isTokenReq)
   {
-    let header = new HttpHeaders({
-      'Accept': 'application/json',
-      'Authorization': localStorage.getItem('token')
-    });
+    console.log(data);
+    var httpOption={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+ 
     console.log("data");
-    return this.http.post(this.link+url,data,isTokenReq?{headers:header}:{});
+    return this.http.post(this.link+url,data,isTokenReq?httpOption:{});
   }
+  postEncode(url,data,isTokenReq){
+  var httpOption={
+    headers:new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': localStorage.getItem('token')
+    })
+  }
+
+  console.log("data");
+  return this.http.post(this.link+url,data,isTokenReq?httpOption:{});
 }
+}
+
