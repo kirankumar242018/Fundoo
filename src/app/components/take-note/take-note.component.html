@@ -8,10 +8,10 @@
         </div>
         <div *ngIf='isOpen' style="width: 100%;"  >
               <div class="title" >
-                <input matInput type="text" [formControl]="title"  placeholder="title"  style=" border:none transparent; outline:none; font-size: 18px; font-family: sans-serif;" required >
+                <input matInput type="text" [formControl]="title"  placeholder="Title"  style=" border:none transparent; outline:none; font-size: 18px; font-family: sans-serif;" required >
               </div>
               <div class="description" >
-                  <textarea matInput cdkTextareaAutosize [formControl]="description"  placeholder="description" #autosize="cdkTextareaAutosize"  
+                  <textarea matInput cdkTextareaAutosize [formControl]="description"  placeholder="Take a note.." #autosize="cdkTextareaAutosize"  
                   style=" border:none transparent;
                   outline: none;" required ></textarea>
               </div>
@@ -21,7 +21,6 @@
               <div fxLayout="row" fxLayoutAlign="space-between center"   >
                 <div class="icon" >
                     <app-icon></app-icon>
-  
                 </div> 
                 <div> 
                   <button type="text"  (click)="isOpen=false" (click)="addNote()" fxLayoutAlign="end center" style="padding: 0;border: none; background: none; font-size: 18px"  >Close</button>

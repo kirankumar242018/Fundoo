@@ -19,7 +19,6 @@ import {AuthGuard} from './service/auth/auth.guard';
 import {AuthserviceService} from './service/auth_servive/authservice.service';
 import { NoteComponent } from './components/note/note.component';
 import { DiaplayNoteComponent } from './components/diaplay-note/diaplay-note.component';
-import { GetAllNoteComponent } from './components/get-all-note/get-all-note.component';
 
 
 @NgModule({
@@ -34,7 +33,6 @@ import { GetAllNoteComponent } from './components/get-all-note/get-all-note.comp
     IconComponent,
     NoteComponent,
     DiaplayNoteComponent,
-    GetAllNoteComponent,
    
     
   ],

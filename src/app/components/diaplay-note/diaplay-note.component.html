@@ -1,3 +1,20 @@
-<p>
-  diaplay-note works!
-</p>
+
+<div fxLayout="row wrap">
+<div *ngFor="let note of allCards" class="container" fxLayoutGap="5px"  >
+  <mat-card class="cards"   >
+      <div class="title" fxLayoutGap="10px">
+          <mat-card-title>{{note.title}}</mat-card-title>	
+      </div>
+      <div class="description" fxLayoutGap="10px" >
+          <mat-card-title>{{note.description}}</mat-card-title>	
+      </div>
+      <div class="icon" >
+          <app-icon></app-icon>
+      </div> 
+    
+  </mat-card>
+
+
+</div>
+
+</div>

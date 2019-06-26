@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-diaplay-note',
@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./diaplay-note.component.scss']
 })
 export class DiaplayNoteComponent implements OnInit {
+  @Input() allCards;
+    constructor() { }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+ngOnInit() {
+}
 
 }

@@ -23,4 +23,7 @@ export class NoteService {
   addNote(url,body){
     return this.httpService.postEncode(url,this.encode(body),true);
   }
+  getNote(){
+    return this.httpService.get('notes/getNotesList',true);
+  }
 }
