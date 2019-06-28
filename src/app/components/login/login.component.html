@@ -37,9 +37,15 @@
       <div>
         <mat-card-actions class="link-button">
 
-          <div fxLayout='row' fxLayoutAlign="space-evenly center" fxLayoutGap="4px">
-            <button mat-raised-button (click)="getLogin()" id="log-btn" color="primary">Login</button>
-            <a href="forgot-password" id="link1" (click)="forgot_password()">Forgot Password..?</a>
+          <div fxLayout="row" fxLayoutAlign="space-around center" >
+              <div>
+                  <a href="forgot-password" id="link1" (click)="forgot_password()">Forgot Password..?</a>
+
+              </div>
+              <div>
+                  <button mat-raised-button (click)="getLogin()" id="log-btn" color="primary">Login</button>
+
+              </div>
           </div>
           <div fxLayout="column" fxLayoutAlign="center center" style="margin-top: 10px; ">
             <a href="/register" id="link2" (click)="register()">Create an acount</a>

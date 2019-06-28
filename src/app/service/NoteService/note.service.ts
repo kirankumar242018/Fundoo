@@ -26,4 +26,7 @@ export class NoteService {
   getNote(){
     return this.httpService.get('notes/getNotesList',true);
   }
+  updateNote(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }

@@ -1,12 +1,12 @@
 
-<div fxLayout="row wrap">
-<div *ngFor="let note of allCards" class="container" fxLayoutGap="5px"  >
-  <mat-card class="cards"   >
-      <div class="title" fxLayoutGap="10px">
-          <mat-card-title>{{note.title}}</mat-card-title>	
+<div fxFlex=100 fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap"  >
+<div *ngFor="let note of allCards" class="container" fxLayoutGap="2px"  >
+  <mat-card class="cards" >
+      <div class="title"  fxLayoutGap="10px">
+          <mat-card-title style="font-size:16px;" (click)="modifyNote(note)" >{{note.title}}</mat-card-title>	
       </div>
-      <div class="description" fxLayoutGap="10px" >
-          <mat-card-title>{{note.description}}</mat-card-title>	
+      <div class="description"  fxLayoutGap="10px" >
+          <mat-card-title style="font-size:16px;">{{note.description}}</mat-card-title>	
       </div>
       <div class="icon" >
           <app-icon></app-icon>

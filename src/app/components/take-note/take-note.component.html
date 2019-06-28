@@ -1,5 +1,5 @@
-<div class="main" fxFlex=100 fxLayout="row" fxLayoutAlign="center center"  >
-    <mat-card fxLayout="column" fxLayoutAlign="center center"  class="note-card" fxFlex=50 fxFlex.md=80 fxFlex.sm=55 fxFlex.xs=80 >
+<div class="main" fxFlex=80  fxFlex.xs=80  fxLayout="row" fxLayoutAlign="center center"  >
+    <mat-card fxLayout="column" fxLayoutAlign="center center"  class="note-card" fxFlex=50 fxFlex.md=80 fxFlex.sm=75 fxFlex.xs=80 >
         <div *ngIf="!isOpen" (click)='isOpen=true' class="heading"  fxLayout="row" fxLayoutAlign="start center"  >
           <h5>Take a Note..</h5>
         </div>
@@ -8,7 +8,7 @@
         </div>
         <div *ngIf='isOpen' style="width: 100%;"  >
               <div class="title" >
-                <input matInput type="text" [formControl]="title"  placeholder="Title"  style=" border:none transparent; outline:none; font-size: 18px; font-family: sans-serif;" required >
+                <input matInput type="text" [formControl]="title"  placeholder="Title"  style=" border:none transparent; outline:none; font-size: 16px; font-family: sans-serif;" required >
               </div>
               <div class="description" >
                   <textarea matInput cdkTextareaAutosize [formControl]="description"  placeholder="Take a note.." #autosize="cdkTextareaAutosize"  
@@ -23,7 +23,7 @@
                     <app-icon></app-icon>
                 </div> 
                 <div> 
-                  <button type="text"  (click)="isOpen=false" (click)="addNote()" fxLayoutAlign="end center" style="padding: 0;border: none; background: none; font-size: 18px"  >Close</button>
+                  <button type="text"  (click)="isOpen=false" (click)="addNote()" fxLayoutAlign="end center" style="padding: 0;border: none; background: none; font-size: 16px"  >Close</button>
                 </div>
               </div>
             </div>

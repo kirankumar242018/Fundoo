@@ -49,7 +49,7 @@
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56" class="sidenav-content">
       <mat-nav-list>
-        <div>
+        <div class="sidenavbar" >
               <div class="sidenav-list" (click)="HeaderName='FundooNotes'"
               [ngClass]="{'sidenav':HeaderName != 'FundooNotes','sidenav-list':HeaderName == 'FundooNotes'}" >
                 <button mat-button routerLinkActive="sidenav-list" class="round" (click)='Note'  >
@@ -66,7 +66,7 @@
               <div class="divider"></div>
 
               <div style="margin-top: 8px;margin-bottom: 8px;"  >
-                    <mat-label style="margin-left:32px;"> Lables</mat-label>
+                    <mat-label style="margin-left:-10px;"> Lables</mat-label>
                     <!-- <div>
                         <a mat-list-item routerLink="." class="round">labels</a>
                     </div> -->

@@ -9,6 +9,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
 imports: [MatButtonModule,
     MatToolbarModule,
@@ -20,7 +21,8 @@ imports: [MatButtonModule,
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
 
 ],
 exports: [MatButtonModule,
@@ -33,7 +35,8 @@ exports: [MatButtonModule,
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
 ],
  
 })
