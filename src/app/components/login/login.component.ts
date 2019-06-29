@@ -28,39 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  // login(){
-  //   try{
-  //     this.model = {
-  //       userName : this.userName.value,
-  //       password : this.password.value
 
-  //     }
-  //     if(this.userName.value == '' || this.password.value == '')
-  //     {
-  //       this.message = ""
-  //       this.snackBar.open("Fields must be filled empty not accepted...", "close" ,{ duration: 3000});
-  //       return
-  //     }
-  //     else{
-  //       this.httpService.postRequest('/user/login',this.model).subscribe(data =>{
-  //         this.response = data ;
-  //         this.message_1 = this.response.message
-  //         console.log(data)
-  //         // this.router.navigate(['dashBoard'])
-
-  //       },
-  //       err =>{
-  //         alert('Invalid User..!')
-  //       })
-  //     }
-  //   }
-  //   catch(err)
-  //   {
-  //     this.message="User Not Found.."
-
-  //   }
-
-  // }
 
   userNameErrorMessage(){
     return this.userName.hasError('required') ? 'Enter the userName':

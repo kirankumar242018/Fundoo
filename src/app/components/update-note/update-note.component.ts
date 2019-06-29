@@ -24,16 +24,23 @@ export class UpdateNoteComponent implements OnInit {
       this.description=this.data['description'];
       this.card=this.data['id'];
     
-    
+      this.dataService.currentMessage.subscribe(message => {console.log('data in update',message)}
+      )
+
   }
+
   close(): void {
-    // var contents={
-    //   "title":this.data['title'],
-    //   "description":this.data['description'],
-    //   "noteId":this.data['id']
-    // }
+    var contents={
+      "title":this.title,
+      "description":this.description,
+      "noteId":this.card
+    }
     this.noteService.updateNote('notes/updateNotes',contents).subscribe(data=>{
       console.log(data);
+      this.dataService.changeMessage({
+        data:{},
+        type:'update'
+      })
       this.snackBar.open("Note Updated Successfully..","close", {
         duration: 3000,
       });
@@ -42,6 +49,10 @@ export class UpdateNoteComponent implements OnInit {
       console.log(err)
     })
     this.dialogRef.close();
+  }
+  newMessage() {
+    
+    this.dataService.changeMessage({})
   }
   
 

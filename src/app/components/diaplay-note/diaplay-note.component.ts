@@ -14,9 +14,13 @@ export class DiaplayNoteComponent implements OnInit {
   title:string
   description:string
   card:any
-  constructor(public dialog: MatDialog,public noteService:NoteService,private data: DataServiceService ) { }
+  constructor(public dialog: MatDialog,public noteService:NoteService,private dataService: DataServiceService ) { }
 
 ngOnInit() {
+  this.dataService.currentMessage.subscribe(message =>{
+    console.log('data in display',message);
+    
+  })
 
 }
 modifyNote(note): void {
