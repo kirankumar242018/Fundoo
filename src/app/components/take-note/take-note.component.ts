@@ -27,9 +27,9 @@ description=new FormControl('',[Validators.required])
     console.log(form_contents)
     if(this.title.value =='' || this.description.value == '' )
     {
-      this.snackBar.open("title and description is required...","close", {
-        duration: 3000,
-      });
+      // this.snackBar.open("title and description is required...","close", {
+        // duration: 3000,
+      // });
     }
     else{
       this.noteService.addNote('notes/addNotes',form_contents).subscribe(data =>{

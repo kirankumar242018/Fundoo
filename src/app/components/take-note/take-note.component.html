@@ -6,10 +6,19 @@
         <div >
           
         </div>
-        <div *ngIf='isOpen' style="width: 100%;"  >
-              <div class="title" >
-                <input matInput type="text" [formControl]="title"  placeholder="Title"  style=" border:none transparent; outline:none; font-size: 16px; font-family: sans-serif;" required >
+        <div  *ngIf='isOpen' style="width: 100%;"  >
+              <div fxLayout="row" >
+                  <div class="title" >
+                    <input matInput type="text" [formControl]="title"  placeholder="Title"  style=" border:none transparent; outline:none; font-size: 16px; font-family: sans-serif;" required >
+                  </div>
+                  <div>
+                    <button mat-icon-button (click)="isPinned=true" >
+                      <mat-icon><img src="../../../assets/images/images.png" height="25px" width="25px" ></mat-icon>
+                    </button>
+                  </div>
               </div>
+              
+
               <div class="description" >
                   <textarea matInput cdkTextareaAutosize [formControl]="description"  placeholder="Take a note.." #autosize="cdkTextareaAutosize"  
                   style=" border:none transparent;

@@ -29,4 +29,7 @@ export class NoteService {
   updateNote(url,body){
     return this.httpService.post(url,body,true);
   }
+  deleteNote(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }

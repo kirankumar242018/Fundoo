@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DataServiceService } from 'src/app/service/DataService/data-service.service'
-import { NoteService } from 'src/app/service/NoteService/note.service';
+import { DataServiceService } from '../../service/DataService/data-service.service'
+import { NoteService } from '../../service/NoteService/note.service';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
