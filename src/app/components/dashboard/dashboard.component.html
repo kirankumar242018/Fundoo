@@ -52,7 +52,7 @@
         <div class="sidenavbar" >
               <div class="sidenav-list" (click)="HeaderName='FundooNotes'"
               [ngClass]="{'sidenav':HeaderName != 'FundooNotes','sidenav-list':HeaderName == 'FundooNotes'}" >
-                <button mat-button routerLinkActive="sidenav-list" class="round" (click)='Note'  >
+                <button mat-button  routerLinkActive="sidenav-list" routerLink="note" class="round" (click)='Note'  >
                   <mat-icon style="margin-right:24px;" >lightbulb_outline</mat-icon>Note
                 </button>
               </div>
@@ -78,7 +78,7 @@
               <div class="divider"></div>
               <div style="margin-top: 8px;margin-bottom: 8px;" (click)="HeaderName='Archive'"
               [ngClass]="{'sidenav':HeaderName != 'Archive','sidenav-list':HeaderName == 'Archive'}" >
-                <button  mat-button routerLink="." class="round" (click)='Archive'  >
+                <button  mat-button routerLink="archive" class="round" (click)='Archive'  >
                 <mat-icon style="margin-right:24px;">archive</mat-icon>Archive</button>
               </div>
               
@@ -86,7 +86,7 @@
               
               <div  (click)="HeaderName='Trash'"
               [ngClass]="{'sidenav':HeaderName != 'Trash','sidenav-list':HeaderName == 'Trash'}" >
-                <button mat-button routerLink="." class="round" (click)='Trash' >
+                <button mat-button routerLink="trash" class="round" (click)='Trash' >
                 <mat-icon style="margin-right:24px;">delete</mat-icon>Trash</button>
               </div>
         </div>

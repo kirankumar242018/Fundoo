@@ -32,4 +32,10 @@ export class NoteService {
   deleteNote(url,body){
     return this.httpService.post(url,body,true);
   }
+  archiveNote(url,body){
+    return this.httpService.post(url,body,true);
+  }
+  ispined(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }

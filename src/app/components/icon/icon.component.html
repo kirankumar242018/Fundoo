@@ -1,45 +1,40 @@
 <div fxLayout="row" fxLayoutAlign="space-around center"  fxLayoutGap="10px" fxLayoutGap.sm="4px" fxLayoutGap.md="4px" fxLayoutGap.xs="1px" fxFlex=100 >
   <div fxFlex=17  >
-    <button mat-icon-button (click)="snav.toggle()" >
+    <button mat-icon-button  >
       <mat-icon class="material-icons" >notification_important</mat-icon>
     </button>
   </div>
   <div fxFlex=16 >
-    <button mat-icon-button (click)="snav.toggle()" >
+    <button mat-icon-button  >
       <mat-icon>person_add</mat-icon>
     </button>
   </div>
   <div fxFlex=16 >
-    <button mat-icon-button (click)="snav.toggle()" >
+    <button mat-icon-button  >
       <mat-icon>palette</mat-icon>
     </button>
   </div>
   <div fxFlex=16 >
-      <button mat-icon-button (click)="snav.toggle()" >
+      <button mat-icon-button  >
           <mat-icon>insert_photo</mat-icon>
       </button>
 
   </div>
   <div fxFlex=16 >
-      <button mat-icon-button (click)="snav.toggle()" >
+      <button mat-icon-button (click)='archiveNote()'  >
           <mat-icon>archive</mat-icon>
       </button>
 
   </div>
   <div fxFlex=19 >
-      <button mat-icon-button [matMenuTriggerFor]="menu" (click)="snav.toggle()" >
+      <button mat-icon-button [matMenuTriggerFor]="menu"  >
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)='deleteNote()' >Delete Note</button>
+          <button mat-menu-item (click)='trashNote()' >Delete Note</button>
           <button mat-menu-item>Add Label</button>
         </mat-menu>
 
 
   </div>
 </div>
-<!-- <mat-menu #appMenu="matMenu" yPosition="above">
-  <mat-icon class="icon">close</mat-icon>
-  <button mat-menu-item>Settings</button>
-  <button mat-menu-item>Help</button>
-</mat-menu> -->

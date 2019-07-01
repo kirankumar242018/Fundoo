@@ -1,30 +1,64 @@
 <div fxFlex=100 fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap">
     <div *ngFor="let note of allCards" class="container" fxLayoutGap="2px">
-        <mat-card class="cards">
+        <div *ngIf="note.isPined==true" >
+            <mat-card class="cards">
 
 
 
-            <div fxLayout="row">
-                <div class="title" fxLayoutGap="10px">
-                    <mat-card-title style="font-size:16px;" (click)="modifyNote(note)">{{note.title}}
-                    </mat-card-title>
+                <div fxLayout="row">
+                    <div class="title" >
+                        <mat-card-title style="font-size:16px;" (click)="modifyNote(note)">{{note.title}}
+                        </mat-card-title>
+                    </div>
+                    <div>
+                        <button mat-icon-button (click)="isPined(note)">
+                            <!-- <mat-icon> -->
+                                <img src="../../../assets/images/images.png" height="25px" width="25px">
+                            <!-- </mat-icon> -->
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <button mat-icon-button (click)="isPinned=true">
-                        <mat-icon><img src="../../../assets/images/images.png" height="25px" width="25px">
-                        </mat-icon>
-                    </button>
+                <div class="description" fxLayoutGap="10px">
+                    <mat-card-title style="font-size:16px;">{{note.description}}</mat-card-title>
                 </div>
-            </div>
-            <div class="description" fxLayoutGap="10px">
-                <mat-card-title style="font-size:16px;">{{note.description}}</mat-card-title>
-            </div>
-            <div class="icon">
-                <app-icon [childMessage]='note' ></app-icon>
-            </div>
+                <div class="icon">
+                    <app-icon [childMessage]='note'></app-icon>
+                </div>
 
 
-        </mat-card>
+            </mat-card>
+
+        </div>
+
+        <div *ngIf="note.isPined==false" >
+            <mat-card class="cards">
+
+
+
+                <div fxLayout="row">
+                    <div class="title" fxLayoutGap="10px">
+                        <mat-card-title style="font-size:16px;" (click)="modifyNote(note)">{{note.title}}
+                        </mat-card-title>
+                    </div>
+                    <div>
+                        <button mat-icon-button (click)="isPined(note)">
+                            <mat-icon><img src="../../../assets/images/images.png" height="25px" width="25px">
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="description" fxLayoutGap="10px">
+                    <mat-card-title style="font-size:16px;">{{note.description}}</mat-card-title>
+                </div>
+                <div class="icon">
+                    <app-icon [childMessage]='note'></app-icon>
+                </div>
+
+
+            </mat-card>
+        </div>
+
+
 
 
     </div>

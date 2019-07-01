@@ -10,31 +10,41 @@ import { MatSnackBar, MatCard } from '@angular/material';
 })
 
 export class IconComponent implements OnInit {
-  isdeleted=true;
-  constructor(public dataService: DataServiceService,public noteService:NoteService,private snackBar:MatSnackBar) { }
+  // isdeleted = true;
+  constructor(public dataService: DataServiceService, public noteService: NoteService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
   @Input() childMessage
-  deleteNote(){
-    var contents={
-      noteId : this.childMessage.id,
-      // noteId :card.id,
-      isdeleted:this.isdeleted
+  trashNote() {
+    var contents = {
+      noteIdList: [this.childMessage['id']],
+      isDeleted: true
     }
-    this.noteService.deleteNote('notes/trashNotes',contents).subscribe(data=>{
+    this.noteService.deleteNote('notes/trashNotes', contents).subscribe(data => {
       console.log(data);
-      this.dataService.changeMessage({
-        data:{},
-        type:'delete'
-      })
-      this.snackBar.open("Note moved to trash Successfully..","close", {
+      
+      this.snackBar.open("Note moved to trash Successfully..", "close", {
         duration: 3000,
       });
+    },
+      err => {
+        console.log(err)
+      })
+  }
+  archiveNote(){
+    var contents = {
+      noteIdList:[this.childMessage['id']],
+      isArchived:true
+    }
+    this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
+      console.log(data);
+      this.snackBar.open("Note archived successfully...","close",{duration:3000,});
     },
     err=>{
       console.log(err)
     })
+
   }
 
 }

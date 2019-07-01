@@ -10,6 +10,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { AuthGuard } from './service/auth/auth.guard';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { NoteComponent } from './components/note/note.component';
+import { TrashNoteComponent } from './components/trash-note/trash-note.component';
+import { ArchiveNoteComponent } from './components/archive-note/archive-note.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -28,6 +30,14 @@ const routes: Routes = [
       {
         path: 'note',
         component: NoteComponent
+      },
+      {
+        path:'trash',
+        component:TrashNoteComponent
+      },
+      {
+        path:'archive',
+        component:ArchiveNoteComponent
       }
     ]
   },
