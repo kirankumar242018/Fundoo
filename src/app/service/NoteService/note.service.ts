@@ -38,4 +38,7 @@ export class NoteService {
   ispined(url,body){
     return this.httpService.post(url,body,true);
   }
+  noteColorChange(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }

@@ -10,9 +10,18 @@
     </button>
   </div>
   <div fxFlex=16 >
-    <button mat-icon-button  >
+    <button mat-icon-button [matMenuTriggerFor]="menucolor" color="" >
       <mat-icon>palette</mat-icon>
     </button>
+    <mat-menu #menucolor="matMenu">
+    <div fxLayout="row" *ngFor='let row of color' fxLayoutGap="3px" style="margin-bottom:5px;"  >
+      <div  *ngFor='let col of row'  >
+          <button mat-mini-fab  (click)="changeColor(col)" ></button>
+      </div>
+    
+    </div>
+      
+  </mat-menu>
   </div>
   <div fxFlex=16 >
       <button mat-icon-button  >
@@ -33,7 +42,7 @@
       <mat-menu #menu="matMenu">
           <button mat-menu-item (click)='trashNote()' >Delete Note</button>
           <button mat-menu-item>Add Label</button>
-        </mat-menu>
+      </mat-menu>
 
 
   </div>

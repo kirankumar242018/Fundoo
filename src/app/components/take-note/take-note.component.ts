@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { NoteService } from 'src/app/service/NoteService/note.service';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
@@ -19,6 +19,8 @@ description=new FormControl('',[Validators.required])
 
   ngOnInit() {
   }
+  @Output() refreshEvent = new EventEmitter();
+
   addNote(){
     var form_contents = {
       "title":this.title.value,
@@ -34,6 +36,7 @@ description=new FormControl('',[Validators.required])
     else{
       this.noteService.addNote('notes/addNotes',form_contents).subscribe(data =>{
         console.log(data,"note data")
+        this.refreshEvent.emit()
         this.snackBar.open("Note Created Successfully..","close", {
           duration: 3000,
         });
@@ -43,6 +46,6 @@ description=new FormControl('',[Validators.required])
       } )
     }
   }
- 
+  
 
 }
