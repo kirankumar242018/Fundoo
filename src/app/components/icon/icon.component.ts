@@ -27,6 +27,10 @@ export class IconComponent implements OnInit {
     }
     this.noteService.deleteNote('notes/trashNotes', contents).subscribe(data => {
       console.log(data);
+      this.dataService.changeMessage({
+        data:{},
+        type:'trash'
+      })
       
       this.snackBar.open("Note moved to trash Successfully..", "close", {
         duration: 3000,
@@ -43,6 +47,11 @@ export class IconComponent implements OnInit {
     }
     this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
       console.log(data);
+      this.dataService.changeMessage({
+        data:{},
+        type:'archive'
+      })
+
       this.snackBar.open("Note archived successfully...","close",{duration:3000,});
     },
     err=>{

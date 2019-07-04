@@ -24,8 +24,7 @@ export class UpdateNoteComponent implements OnInit {
       this.description=this.data['description'];
       this.card=this.data['id'];
     
-      this.dataService.currentMessage.subscribe(message => {console.log('data in update',message)}
-      )
+      this.dataService.currentMessage.subscribe(message => {console.log('data in update',message)})
 
   }
 

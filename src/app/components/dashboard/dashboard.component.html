@@ -38,7 +38,32 @@
             </div>
 
             <div fxFlex=14 fxFlex.md=18 fxFlex.sm=35 fxFlex.xs=35 fxLayoutAlign="end center" >
-              <button mat-mini-fab color="accent">Profile</button>
+              <button mat-mini-fab color="" [matMenuTriggerFor]="menu" >Profile</button>
+              <div class="profile" >
+
+                <mat-menu #menu="matMenu">
+                      <div  fxLayout="row" fxLayoutGap="15px"   >
+                            <div style="border-radius: 50%;" >
+                                <img mat-card-avatar src="../../../assets/images/boss.jpeg" (click)="cropImage()" >
+                                
+                            </div>
+                            <div>
+                                <mat-card-title style="font-size:16px;" >user-email-address
+                                  </mat-card-title>
+                            </div>
+                      </div>
+                      <div class="divider"></div>
+                      <div fxLayoutAlign="end center"  >
+                            <div>
+                                <button mat-raised-button (click)="logout()" id="logout-btn" color="primary">signout</button>
+
+                            </div>
+                            
+                      </div>
+                  
+                </mat-menu>
+              </div>  
+
             </div>
     </div>
 

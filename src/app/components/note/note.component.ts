@@ -22,7 +22,14 @@ export class NoteComponent implements OnInit {
       if (data.type == 'update') {
         this.getAllCard();
       }
+      else if(data.type == 'archive'){
+        this.getAllCard();
+      }
+      else if(data.type == 'trash'){
+        this.getAllCard();
+      }
     },
+    
     )
   }
   update(event){

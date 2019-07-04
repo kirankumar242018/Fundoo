@@ -3,9 +3,17 @@
         
         
         <div class="container"  >
-              <div class="title" >
-                <input matInput type="text" [(ngModel)]="title"    placeholder="Title"  style=" border:none transparent; outline:none; font-size: 18px; font-family: sans-serif;" required >
-              </div>
+            <div fxLayout="row" >
+                <div class="title" >
+                  <input matInput type="text" [(ngModel)]="title"    placeholder="Title"  style=" border:none transparent; outline:none; font-size: 18px; font-family: sans-serif;" required >
+                </div>
+                <div>
+                  <button mat-icon-button (click)="isPinned()">
+                    <mat-icon><img src="../../../assets/images/images.png" height="25px" width="25px"></mat-icon>
+                  </button>
+                </div>
+            </div>  
+            
               <div class="description" >
                   <textarea matInput cdkTextareaAutosize [(ngModel)]="description"   placeholder="Take a note.." #autosize="cdkTextareaAutosize"  
                   style=" border:none transparent;
