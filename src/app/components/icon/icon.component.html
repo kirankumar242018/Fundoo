@@ -16,7 +16,7 @@
     <mat-menu #menucolor="matMenu">
     <div fxLayout="row" *ngFor='let row of color' fxLayoutGap="3px" style="margin-bottom:5px;"  >
       <div  *ngFor='let col of row'  >
-          <button mat-mini-fab  (click)="changeColor(col)" ></button>
+          <button mat-mini-fab color="" value="col" [style.background-color]="col" (click)="changeColor(col,note)" ></button>
       </div>
     
     </div>

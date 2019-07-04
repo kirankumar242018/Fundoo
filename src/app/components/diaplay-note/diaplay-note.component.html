@@ -1,7 +1,7 @@
 <div fxFlex=100 fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap">
     <div *ngFor="let note of allCards" class="container" fxLayoutGap="2px">
-        <div *ngIf="note.isPined==true" >
-            <mat-card class="cards">
+        <!-- <div *ngIf="note.isPined==true" >
+            <mat-card class="cards" [ngStyle]="{'background-color': note.color}">
 
 
 
@@ -12,9 +12,7 @@
                     </div>
                     <div>
                         <button mat-icon-button (click)="isPined(note)">
-                            <!-- <mat-icon> -->
                                 <img src="../../../assets/images/images.png" height="25px" width="25px">
-                            <!-- </mat-icon> -->
                         </button>
                     </div>
                 </div>
@@ -28,10 +26,10 @@
 
             </mat-card>
 
-        </div>
+        </div> -->
 
         <div *ngIf="note.isPined==false" >
-            <mat-card class="cards">
+            <mat-card class="cards" [ngStyle]="{'background-color': note.color}">
 
 
 
@@ -40,9 +38,9 @@
                         <mat-card-title style="font-size:16px;" (click)="modifyNote(note)">{{note.title}}
                         </mat-card-title>
                     </div>
-                    <div>
-                        <button mat-icon-button (click)="isPined(note)">
-                            <mat-icon><img src="../../../assets/images/images.png" height="25px" width="25px">
+                    <div class="pinned" >
+                        <button mat-icon-button (click)="isPined(note)" >
+                            <mat-icon><img src="../../../assets/svg-icons/now using.svg"  height="25px" width="25px">
                             </mat-icon>
                         </button>
                     </div>

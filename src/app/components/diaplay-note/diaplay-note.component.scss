@@ -19,3 +19,15 @@
     max-width: 100%;
     margin-bottom: 15px;
 }
+div .icon{
+    visibility: hidden;
+}
+div:hover .icon{
+    visibility: visible;
+}
+div .pinned{
+    visibility:hidden;
+}
+div:hover .pinned{
+    visibility:visible;
+}

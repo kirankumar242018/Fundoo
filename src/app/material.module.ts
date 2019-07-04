@@ -26,6 +26,7 @@ imports: [MatButtonModule,
     MatButtonToggleModule,
     MatDialogModule,
     MatMenuModule,
+    MatButtonModule,
 
 
 ],
@@ -42,6 +43,7 @@ exports: [MatButtonModule,
     MatButtonToggleModule,
     MatDialogModule,
     MatMenuModule,
+    MatButtonModule,
 
 ],
  
