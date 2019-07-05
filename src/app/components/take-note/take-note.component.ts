@@ -19,7 +19,7 @@ description=new FormControl('',[Validators.required])
 
   ngOnInit() {
   }
-  @Output() refreshEvent = new EventEmitter();
+  @Output() refreshEvent = new EventEmitter<any>();
 
   addNote(){
     var form_contents = {
@@ -37,6 +37,8 @@ description=new FormControl('',[Validators.required])
       this.noteService.addNote('notes/addNotes',form_contents).subscribe(data =>{
         console.log(data,"note data")
         this.refreshEvent.emit()
+        
+
         this.snackBar.open("Note Created Successfully..","close", {
           duration: 3000,
         });

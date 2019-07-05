@@ -1,0 +1,43 @@
+<div fxFlex=100>
+  <mat-card fxFlex=100>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-card-title>
+        <h3>Select Profile Photo</h3>
+      </mat-card-title>
+      <button mat-icon-button (click)='close()'>
+        <img src="../../../assets/svg-icons/multiply.svg" height="20px" width="20px">
+      </button>
+    </div>
+    <div class="divider"></div>
+    <div class="button" fxLayout="row" fxLayoutAlign="center center">
+      <mat-card-content>
+        <input type="file" (change)="getprofilephoto($event)"  color="" accept="image/*"/>select a photo from your
+          computer
+      </mat-card-content>
+      <div>
+          <image-cropper [selectedfile]="selectedfile" ></image-cropper>
+
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <mat-card-footer>
+        <div class="footer" fxLayout="row" fxLayoutGap="50px">
+          <div>
+            <button mat-raised-button (click)="setprofilephoto()" id="input-btn" color="primary">set profile
+              photo</button>
+
+          </div>
+          <div>
+            <button mat-raised-button (click)="cancel()" id="input-btn" color="">cancel</button>
+
+          </div>
+
+        </div>
+
+      </mat-card-footer>
+    </div>
+
+  </mat-card>
+
+</div>

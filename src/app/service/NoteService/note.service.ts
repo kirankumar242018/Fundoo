@@ -41,4 +41,8 @@ export class NoteService {
   noteColorChange(url,body){
     return this.httpService.post(url,body,true);
   }
+  profilePic(url,body){
+    return this.httpService.post(url,body,true);
+
+  }
 }

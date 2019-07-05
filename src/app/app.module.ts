@@ -22,6 +22,8 @@ import { DiaplayNoteComponent } from './components/diaplay-note/diaplay-note.com
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { TrashNoteComponent } from './components/trash-note/trash-note.component';
 import { ArchiveNoteComponent } from './components/archive-note/archive-note.component';
+import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ArchiveNoteComponent } from './components/archive-note/archive-note.com
     UpdateNoteComponent,
     TrashNoteComponent,
     ArchiveNoteComponent,
+    ProfilePicComponent,
    
     
   ],
@@ -49,12 +52,13 @@ import { ArchiveNoteComponent } from './components/archive-note/archive-note.com
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ImageCropperModule,
 
 
   ],
   providers: [AuthGuard,AuthserviceService],
-  entryComponents : [UpdateNoteComponent],
+  entryComponents : [UpdateNoteComponent,ProfilePicComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
