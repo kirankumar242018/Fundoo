@@ -42,7 +42,7 @@ export class NoteService {
     return this.httpService.post(url,body,true);
   }
   profilePic(url,body){
-    return this.httpService.post(url,body,true);
+    return this.httpService.postEncode(url,this.encode(body),true);
 
   }
 }

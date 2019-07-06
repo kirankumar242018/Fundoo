@@ -1,8 +1,8 @@
-import {MediaMatcher} from '@angular/cdk/layout';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import {ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import{ProfilePicComponent} from '../../components/profile-pic/profile-pic.component';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ProfilePicComponent } from '../../components/profile-pic/profile-pic.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,9 +11,9 @@ import{ProfilePicComponent} from '../../components/profile-pic/profile-pic.compo
 export class DashboardComponent implements OnInit {
   mobileQuery: MediaQueryList;
 
-  
-  HeaderName = 'Fundoo'
 
+  HeaderName = 'Fundoo'
+  url;
   private _mobileQueryListener: () => void;
 
   constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
@@ -21,18 +21,19 @@ export class DashboardComponent implements OnInit {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-  
+
 
   ngOnInit() {
+    this.url ='http://34.213.106.173/' + localStorage.getItem('image');
   }
-  changeProfile():void {
+  changeProfile(): void {
     const dialogRef = this.dialog.open(ProfilePicComponent, {
       width: '50%',
       data: ''
     });
-  
-}
 
-  
+  }
+
+
 
 }

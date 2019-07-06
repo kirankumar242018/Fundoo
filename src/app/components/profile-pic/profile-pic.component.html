@@ -1,5 +1,5 @@
-<div fxFlex=100>
-  <mat-card fxFlex=100>
+<div fxFlex=100 fxFlex.xs=100 fxFlex.sm=100 fxFlex.md=100  >
+  <mat-card fxFlex=100   >
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <mat-card-title>
         <h3>Select Profile Photo</h3>
@@ -11,12 +11,12 @@
     <div class="divider"></div>
     <div class="button" fxLayout="row" fxLayoutAlign="center center">
       <mat-card-content>
-        <input type="file" (change)="getprofilephoto($event)"  color="" accept="image/*"/>select a photo from your
-          computer
+        <input type="file" (change)="getprofilephoto($event)" 
+         color="" accept="image/*"/>
+          
       </mat-card-content>
       <div>
-          <image-cropper [selectedfile]="selectedfile" ></image-cropper>
-
+          <image-cropper [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)" style="width:250px;height:250px;float:left;" ></image-cropper>
       </div>
     </div>
     <div class="divider"></div>

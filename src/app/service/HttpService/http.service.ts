@@ -37,6 +37,17 @@ export class HttpService {
   console.log("data");
   return this.http.post(this.link+url,data,isTokenReq?httpOption:{});
 }
+postWithoutHeader(url,data,isTokenReq){
+  var httpOption={
+    headers:new HttpHeaders({
+      'Authorization': localStorage.getItem('token')
+    })
+  }
+
+  console.log("data");
+  return this.http.post(this.link+url,data,isTokenReq?httpOption:{});
+}
+
 get(url,isTokenReq){
   var httpOption={
     headers:new HttpHeaders({

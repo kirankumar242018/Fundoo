@@ -6,7 +6,16 @@ import { HttpService } from "../HttpService/http.service";
 export class UserService {
 
   constructor(private http:HttpService) { }
-
+  encode(data) 
+    {
+      const formBody = [];
+      for (const property in data) {
+        const encodedKey = encodeURIComponent(property);
+        const encodedValue = encodeURIComponent(data[property]);
+        formBody.push(encodedKey + '=' + encodedValue);
+      }
+      return formBody.join('&');
+    }
   registerService(url,body){
     return this.http.post(url,body,false);
   }
@@ -18,5 +27,9 @@ export class UserService {
   }
   forgotService(url,body){
     return this.http.post(url,body,false);
+  }
+  profilePic(url,body){
+    return this.http.postWithoutHeader(url,body,true);
+
   }
 }
