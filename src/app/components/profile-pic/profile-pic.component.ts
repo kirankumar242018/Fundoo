@@ -4,6 +4,7 @@ import {NoteService} from '../../service/NoteService/note.service';
 import {MatSnackBar} from '@angular/material';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { UserService } from 'src/app/service/UserService/user.service';
+import { DataServiceService } from 'src/app/service/DataService/data-service.service';
 
 @Component({
   selector: 'app-profile-pic',
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/service/UserService/user.service';
 export class ProfilePicComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ProfilePicComponent>,public noteService:NoteService,public userService:UserService,
-    private snackBar:MatSnackBar) { }
+    private snackBar:MatSnackBar,public dataService:DataServiceService) { }
 
   ngOnInit() {
   }
@@ -32,12 +33,10 @@ export class ProfilePicComponent implements OnInit {
   imageCropped(event: ImageCroppedEvent) {
     console.log("exact file..",event.file);
     
-    this.croppedImage = event.base64;
-    // this.profilepic = <File>event.target.files[0];
+    this.croppedImage = event;
     this.profilepic =<File> event.file;
     console.log("profile pic",this.profilepic)
     
-    // console.log("base64 image=>",this.croppedImage)
   }
 
   setprofilephoto(){
@@ -49,6 +48,10 @@ export class ProfilePicComponent implements OnInit {
     this.userService.profilePic('user/uploadProfileImage',imagefile).subscribe(data=>{
       localStorage.setItem('image',data['status']['imageUrl']);
       console.log("profile pic information...!",data)
+      this.dataService.changeMessage({
+        data:{},
+        type:'profile'
+      })
       this.snackBar.open("profile pic uploaded  Successfully..","close", {
         duration: 3000,
       });

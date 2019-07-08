@@ -50,6 +50,13 @@ export class LoginComponent implements OnInit {
     console.log(field_contents);
     this.userService.loginService('user/login',field_contents).subscribe(data =>{
       localStorage.setItem('token',data['id']);
+      localStorage.setItem('firstName',data['firstName']);
+      localStorage.setItem('lastName',data['lastName']);
+      localStorage.setItem('imageUrl',data['imageUrl']);
+      localStorage.setItem('email',data['email']);
+
+      console.log("login details ..",data)
+
       console.log(field_contents)
       
       this.snackBar.open("Logged Successfully..","close", {

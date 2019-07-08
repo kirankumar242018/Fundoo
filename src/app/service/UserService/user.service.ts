@@ -32,4 +32,7 @@ export class UserService {
     return this.http.postWithoutHeader(url,body,true);
 
   }
+  logout(url,body){
+    return this.http.post(url,body,true);
+  }
 }
