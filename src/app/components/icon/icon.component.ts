@@ -11,7 +11,7 @@ import { MatSnackBar, MatCard } from '@angular/material';
 export class IconComponent implements OnInit {
   // isdeleted = true;
   constructor(public dataService: DataServiceService, public noteService: NoteService, private snackBar: MatSnackBar) { }
-  color=[['#FFFFFF','#FF0000','#0000FF','#FFFF00'],['#00FFFF','#FF00FF','#DC143C','#00BFFF'],['#CD5C5C','#F5DEB3','#FF4500','#8B4513']];
+  color=[['#FFFFFF','#f28b82','#fbbc04','#fff475'],['#ccff90','#a7ffeb','#cbf0f8','#aecbfa'],['#d7aefb','#fdcfe8','#e6c9a8','#e8eaed']];
 
   ngOnInit() {
 
@@ -70,7 +70,7 @@ export class IconComponent implements OnInit {
     }
     this.noteService.noteColorChange('notes/changesColorNotes',contents).subscribe(data=>{
       console.log(data);
-      this.snackBar.open('Note color changed suceesfully...',"close",{duration:2000,});
+      // this.snackBar.open('Note color changed suceesfully...',"close",{duration:2000,});
     },
     err=>{
       console.log(err)

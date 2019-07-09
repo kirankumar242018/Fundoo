@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   username='';
   imageurl;
   localstorage_image;
-
+  values='';
   private _mobileQueryListener: () => void;
 
   constructor(private dataService: DataServiceService,public router:Router ,private snackBar: MatSnackBar,private userService:UserService, public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
@@ -75,5 +75,20 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  searchNotes(event){
+    console.log('events in search bar',event)
+    //this.router.navigate(['dashboard/search'])
+    // console.log("search event information..",event)
+    this.values = event.target.value
+    console.log("values information...",this.values)
+    this.dataService.changeMessage({
+      data:this.values,
+      type:'search'})
+    
+  }
+  getingNote(){
+    this.router.navigate(['dashboard/search'])
+
+  }
 }
 

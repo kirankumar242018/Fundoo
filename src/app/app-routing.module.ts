@@ -12,6 +12,7 @@ import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { NoteComponent } from './components/note/note.component';
 import { TrashNoteComponent } from './components/trash-note/trash-note.component';
 import { ArchiveNoteComponent } from './components/archive-note/archive-note.component';
+import {SerchNotesComponent} from './components/serch-notes/serch-notes.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -38,7 +39,9 @@ const routes: Routes = [
       {
         path:'archive',
         component:ArchiveNoteComponent
-      }
+      },
+      { path: 'search',component:SerchNotesComponent },
+  
     ]
   },
 

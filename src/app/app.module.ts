@@ -24,6 +24,7 @@ import { TrashNoteComponent } from './components/trash-note/trash-note.component
 import { ArchiveNoteComponent } from './components/archive-note/archive-note.component';
 import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { SerchNotesComponent } from './components/serch-notes/serch-notes.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     TrashNoteComponent,
     ArchiveNoteComponent,
     ProfilePicComponent,
+    SerchNotesComponent,
    
     
   ],

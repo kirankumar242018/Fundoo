@@ -20,7 +20,7 @@
         fxFlex.md=40 fxFlex.xs=30>
         <mat-form-field appearance="outline" [style.fontSize.px]=10 fxFlex="100">
           <mat-icon matPrefix>search</mat-icon>
-          <input matInput type="search" fxFlexOffset="2" placeholder="Search" [style.fontSize.px]=15>
+          <input matInput type="search" fxFlexOffset="2" placeholder="Search" [style.fontSize.px]=15 (click)='getingNote()' (keyup)='searchNotes($event)' >
         </mat-form-field>
 
       </div>
@@ -80,9 +80,9 @@
       fixedTopGap="56" class="sidenav-content">
       <mat-nav-list>
         <div class="sidenavbar">
-          <div class="sidenav-list" (click)="HeaderName='FundooNotes'"
+          <div  (click)="HeaderName='FundooNotes'"
             [ngClass]="{'sidenav':HeaderName != 'FundooNotes','sidenav-list':HeaderName == 'FundooNotes'}">
-            <button mat-button routerLinkActive="sidenav-list" routerLink="note" class="round" (click)='Note'>
+            <button mat-button  routerLink="note" class="round" (click)='Note'>
               <mat-icon style="margin-right:24px;">lightbulb_outline</mat-icon>Note
             </button>
           </div>
@@ -97,7 +97,7 @@
           <div class="divider"></div>
 
           <div style="margin-top: 8px;margin-bottom: 8px;">
-            <mat-label style="margin-left:-10px;"> Lables</mat-label>
+            <mat-label style="margin-left:15px;"> Lables</mat-label>
             <!-- <div>
                         <a mat-list-item routerLink="." class="round">labels</a>
                     </div> -->
