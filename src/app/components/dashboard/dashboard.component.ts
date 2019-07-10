@@ -7,6 +7,7 @@ import { DataServiceService } from '../../service/DataService/data-service.servi
 import { UserService } from 'src/app/service/UserService/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import {CreateLabelComponent} from '../../components/create-label/create-label.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -54,6 +55,12 @@ export class DashboardComponent implements OnInit {
       data: ''
     });
 
+  }
+  editLable(): void{
+    const dialogRef = this.dialog.open(CreateLabelComponent, {
+      width: '50%',
+      data: ''
+    });
   }
   changeProfilePic(){
     this.localstorage_image=localStorage.getItem('image');

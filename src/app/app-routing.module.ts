@@ -40,7 +40,9 @@ const routes: Routes = [
         path:'archive',
         component:ArchiveNoteComponent
       },
-      { path: 'search',component:SerchNotesComponent },
+      { path: 'search',
+        component:SerchNotesComponent 
+      },
   
     ]
   },

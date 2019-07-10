@@ -102,9 +102,9 @@
                         <a mat-list-item routerLink="." class="round">labels</a>
                     </div> -->
             <div (click)="HeaderName='EditLable'"
-              [ngClass]="{'sidenav':HeaderName != 'EditLable','sidenav-list':HeaderName == 'EditLable'}">
-              <button mat-button routerLink="." class="round" (click)='EditLable'>
-                <mat-icon style="margin-right:24px;">create</mat-icon>Edit Lables
+              [ngClass]="{'sidenav':HeaderName != 'EditLable','sidenav-list':HeaderName == 'EditLable'}" (click)='editLable()' >
+              <button mat-button routerLink="." class="round"  >
+                <mat-icon style="margin-right:24px;"  >create</mat-icon>Edit Lables
               </button>
             </div>
           </div>

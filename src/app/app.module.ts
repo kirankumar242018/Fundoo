@@ -25,6 +25,7 @@ import { ArchiveNoteComponent } from './components/archive-note/archive-note.com
 import { ProfilePicComponent } from './components/profile-pic/profile-pic.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { SerchNotesComponent } from './components/serch-notes/serch-notes.component';
+import { CreateLabelComponent } from './components/create-label/create-label.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { SerchNotesComponent } from './components/serch-notes/serch-notes.compon
     ArchiveNoteComponent,
     ProfilePicComponent,
     SerchNotesComponent,
+    CreateLabelComponent,
    
     
   ],
@@ -60,7 +62,7 @@ import { SerchNotesComponent } from './components/serch-notes/serch-notes.compon
 
   ],
   providers: [AuthGuard,AuthserviceService],
-  entryComponents : [UpdateNoteComponent,ProfilePicComponent],
+  entryComponents : [UpdateNoteComponent,ProfilePicComponent,CreateLabelComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

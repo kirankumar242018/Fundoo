@@ -1,0 +1,30 @@
+<div fxFlex=100 >
+  <mat-card fxFlex=80% >
+    <div>
+        <mat-card-title>
+            <h5>Edit labels</h5>
+          </mat-card-title>
+    </div>
+    <div fxLayoutAlign="row" fxLayoutAlign="space-evenly center" >
+        
+      <button mat-icon-button (click)='close()'>
+        <img src="../../../assets/svg-icons/multiply.svg" height="15px" width="15px">
+      </button>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Create new label">
+        </mat-form-field>     
+        <button mat-icon-button (click)='check()'>
+            <img src="../../../assets/svg-icons/checkmark.svg" height="50px" width="50px">
+        </button>
+    </div>
+    <div>
+
+    </div>
+    <div class="divider"></div>
+
+    <div fxLayout="row" fxLayoutAlign="end end" >
+      <button mat-raised-button (click)="done()" id="input-btn" color="">Done</button>
+
+    </div>
+  </mat-card>
+</div>

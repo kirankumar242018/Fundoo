@@ -13,8 +13,8 @@
     <button mat-icon-button [matMenuTriggerFor]="menucolor" color="" >
       <mat-icon>palette</mat-icon>
     </button>
-    <mat-menu #menucolor="matMenu">
-    <div fxLayout="row" *ngFor='let row of color' fxLayoutGap="3px" style="margin-bottom:5px;"  >
+    <mat-menu  #menucolor="matMenu">
+    <div fxLayout="row"  *ngFor='let row of color' fxLayoutGap="3px" style="margin-bottom:5px;"  >
       <div  *ngFor='let col of row'  >
           <button mat-mini-fab color="" value="col" [style.background-color]="col" (click)="changeColor(col,note)" ></button>
       </div>
