@@ -59,7 +59,7 @@ export class IconComponent implements OnInit {
     })
 
   }
-  changeColor(color,childMessage){
+  changeColor(color){
     console.log("note details",color)
     this.childMessage.color = color
     console.log("note color",color)

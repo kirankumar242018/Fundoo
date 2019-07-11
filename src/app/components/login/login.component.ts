@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('lastName',data['lastName']);
       localStorage.setItem('imageUrl',data['imageUrl']);
       localStorage.setItem('email',data['email']);
+      localStorage.setItem('userId',data['userId']);
 
       console.log("login details ..",data)
 

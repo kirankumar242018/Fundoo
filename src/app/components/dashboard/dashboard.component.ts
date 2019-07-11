@@ -73,7 +73,10 @@ export class DashboardComponent implements OnInit {
       localStorage.removeItem('firstName');
       localStorage.removeItem('lastName');
       localStorage.removeItem('imageUrl');
+      //localStorage.removeItem('image');
+
       localStorage.removeItem('email');
+      localStorage.removeItem('userId');
       //localStorage.clear();
       this.snackBar.open("Logged out Successfully..","close", {
         duration: 3000,

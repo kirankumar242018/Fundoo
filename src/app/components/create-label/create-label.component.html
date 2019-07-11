@@ -1,5 +1,5 @@
 <div fxFlex=100 >
-  <mat-card fxFlex=80% >
+  <mat-card    >
     <div>
         <mat-card-title>
             <h5>Edit labels</h5>
@@ -17,12 +17,19 @@
             <img src="../../../assets/svg-icons/checkmark.svg" height="50px" width="50px">
         </button>
     </div>
-    <div>
+    <div fxLayoutAlign="row" fxLayoutAlign="space-evenly center" *ngFor='let labels of allLabels' >
+        <button mat-icon-button (click)="deleteLabels()">
+            <mat-icon>label</mat-icon>
+        </button>
+          {{labels}}
+        <button mat-icon-button (click)="editLabels()">
+              <mat-icon>create</mat-icon>
+        </button>
 
     </div>
     <div class="divider"></div>
 
-    <div fxLayout="row" fxLayoutAlign="end end" >
+    <div class="footer" fxLayout="row"  fxLayoutAlign="end center" >
       <button mat-raised-button (click)="done()" id="input-btn" color="">Done</button>
 
     </div>
