@@ -8,6 +8,8 @@ import { UserService } from 'src/app/service/UserService/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import {CreateLabelComponent} from '../../components/create-label/create-label.component';
+import {LabelService} from '../../service/LabelService/label.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -27,16 +29,17 @@ export class DashboardComponent implements OnInit {
   values='';
   private _mobileQueryListener: () => void;
 
-  constructor(private dataService: DataServiceService,public router:Router ,private snackBar: MatSnackBar,private userService:UserService, public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private dataService: DataServiceService,private labelService:LabelService,public router:Router ,private snackBar: MatSnackBar,private userService:UserService, public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
-
+  allLabels=[]
   ngOnInit() {
    //this.localstorage_image = localStorage.getItem('image')
    this.changeProfilePic()
+   this.getNoteLabels()
    this.email = localStorage.getItem('email');
    this.firstname = localStorage.getItem('firstName');
    this.lastname = localStorage.getItem('lastName');
@@ -99,6 +102,18 @@ export class DashboardComponent implements OnInit {
   getingNote(){
     this.router.navigate(['dashboard/search'])
 
+  }
+  getNoteLabels(){
+    this.labelService.getLabel().subscribe(data=>{
+      console.log("labels data...",data)
+      this.allLabels = data['data']['details'];
+      //this.getLabels = this.addLabels.reverse();
+      console.log("got labels..",this.allLabels)
+
+    },
+    err=>{
+      console.log(err)
+    });
   }
 }
 

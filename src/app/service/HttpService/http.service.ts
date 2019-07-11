@@ -26,18 +26,7 @@ export class HttpService {
     console.log("data");
     return this.http.post(this.link+url,data,isTokenReq?httpOption:{});
   }
-  // postlogout(url,isTokenReq)
-  // {
-  //   var httpOption={
-  //     headers:new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Authorization': localStorage.getItem('token')
-  //     })
-  //   }
- 
-  //   return this.http.post(this.link+url,isTokenReq?httpOption:{});
-
-  // }
+  
 
   postEncode(url,data,isTokenReq){
   var httpOption={

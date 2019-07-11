@@ -5,24 +5,24 @@
             <h5>Edit labels</h5>
           </mat-card-title>
     </div>
-    <div fxLayoutAlign="row" fxLayoutAlign="space-evenly center" >
+    <div fxLayoutAlign="row" fxLayoutAlign="center center" >
         
       <button mat-icon-button (click)='close()'>
         <img src="../../../assets/svg-icons/multiply.svg" height="15px" width="15px">
       </button>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Create new label">
+            <input matInput placeholder="Create new label" [formControl]="labelname"  >
         </mat-form-field>     
         <button mat-icon-button (click)='check()'>
             <img src="../../../assets/svg-icons/checkmark.svg" height="50px" width="50px">
         </button>
     </div>
-    <div fxLayoutAlign="row" fxLayoutAlign="space-evenly center" *ngFor='let labels of allLabels' >
-        <button mat-icon-button (click)="deleteLabels()">
+    <div fxLayoutAlign="row" fxLayoutAlign="center center" *ngFor='let labels of allLabels'  >
+        <button mat-icon-button (click)="deleteLabels(labels.id)">
             <mat-icon>label</mat-icon>
         </button>
-          {{labels}}
-        <button mat-icon-button (click)="editLabels()">
+        <input matInput value="{{labels.label}}" [formControl]="editname" >
+        <button mat-icon-button (click)="editLabels(labels.id,labels.label)">
               <mat-icon>create</mat-icon>
         </button>
 
@@ -30,7 +30,7 @@
     <div class="divider"></div>
 
     <div class="footer" fxLayout="row"  fxLayoutAlign="end center" >
-      <button mat-raised-button (click)="done()" id="input-btn" color="">Done</button>
+      <button mat-raised-button (click)="addLabels()" id="input-btn" color="">Done</button>
 
     </div>
   </mat-card>

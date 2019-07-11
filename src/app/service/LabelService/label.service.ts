@@ -10,5 +10,10 @@ export class LabelService {
   getLabel(){
     return this.httpService.get('noteLabels/getNoteLabelList',true);
   }
-
+  addLabel(url,body){
+    return this.httpService.post(url,body,true);
+  }
+  editLabel(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }
