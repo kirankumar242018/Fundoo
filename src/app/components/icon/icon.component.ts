@@ -21,7 +21,7 @@ export class IconComponent implements OnInit {
   }
 
   @Input() childMessage
-
+  @Input() receivedLabels;
 
   trashNote() {
     var contents = {
