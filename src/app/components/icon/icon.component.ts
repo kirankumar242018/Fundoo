@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataServiceService } from '../../service/DataService/data-service.service'
 import { NoteService } from '../../service/NoteService/note.service';
 import { MatSnackBar, MatCard } from '@angular/material';
+import { LabelService } from '../../service/LabelService/label.service';
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
@@ -10,11 +11,13 @@ import { MatSnackBar, MatCard } from '@angular/material';
 
 export class IconComponent implements OnInit {
   // isdeleted = true;
-  constructor(public dataService: DataServiceService, public noteService: NoteService, private snackBar: MatSnackBar) { }
+  constructor(public dataService: DataServiceService, public noteService: NoteService, private snackBar: MatSnackBar,
+    private labelService:LabelService) { }
   color=[['#FFFFFF','#f28b82','#fbbc04','#fff475'],['#ccff90','#a7ffeb','#cbf0f8','#aecbfa'],['#d7aefb','#fdcfe8','#e6c9a8','#e8eaed']];
-
+  allLabels=[]
+  getLabels=[]
   ngOnInit() {
-
+    this.getNoteLabels()
   }
 
   @Input() childMessage
@@ -76,6 +79,18 @@ export class IconComponent implements OnInit {
       console.log(err)
     })
 
+  }
+  getNoteLabels(){
+    this.labelService.getLabel().subscribe(data=>{
+      console.log("labels data...",data)
+      this.allLabels = data['data']['details'];
+      this.getLabels = this.allLabels.reverse();
+      console.log("get labels..",this.getLabels)
+
+    },
+    err=>{
+      console.log(err)
+    });
   }
   
 

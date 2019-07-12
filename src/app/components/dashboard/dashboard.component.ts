@@ -51,6 +51,9 @@ export class DashboardComponent implements OnInit {
     if(data.type == 'profile'){
        this.changeProfilePic()
      }
+    else if(data.type == 'editlabel'){
+      this.getNoteLabels()
+    } 
    })
   }
   changeProfile(): void {

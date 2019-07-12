@@ -1,49 +1,70 @@
-<div fxLayout="row" fxLayoutAlign="space-around center"  fxLayoutGap="10px" fxLayoutGap.sm="4px" fxLayoutGap.md="4px" fxLayoutGap.xs="1px" fxFlex=100 >
-  <div fxFlex=17  >
-    <button mat-icon-button  >
-      <mat-icon class="material-icons" >notification_important</mat-icon>
+<div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px" fxLayoutGap.sm="4px" fxLayoutGap.md="4px"
+  fxLayoutGap.xs="1px" fxFlex=100>
+  <div fxFlex=17>
+    <button mat-icon-button>
+      <mat-icon class="material-icons">notification_important</mat-icon>
     </button>
   </div>
-  <div fxFlex=16 >
-    <button mat-icon-button  >
+  <div fxFlex=16>
+    <button mat-icon-button>
       <mat-icon>person_add</mat-icon>
     </button>
   </div>
-  <div fxFlex=16 >
-    <button mat-icon-button [matMenuTriggerFor]="menucolor" color="" >
+  <div fxFlex=16>
+    <button mat-icon-button [matMenuTriggerFor]="menucolor" color="">
       <mat-icon>palette</mat-icon>
     </button>
-    <mat-menu  #menucolor="matMenu">
-    <div fxLayout="row"  *ngFor='let row of color' fxLayoutGap="3px" style="margin-bottom:5px;"  >
-      <div  *ngFor='let col of row'  >
-          <button mat-mini-fab color="" value="col" [style.background-color]="col" (click)="changeColor(col)" ></button>
+    <mat-menu #menucolor="matMenu">
+      <div fxLayout="row" *ngFor='let row of color' fxLayoutGap="3px" style="margin-bottom:5px;">
+        <div *ngFor='let col of row'>
+          <button mat-mini-fab color="" value="col" [style.background-color]="col" (click)="changeColor(col)"></button>
+        </div>
+
       </div>
-    
-    </div>
-      
-  </mat-menu>
+
+    </mat-menu>
   </div>
-  <div fxFlex=16 >
-      <button mat-icon-button  >
-          <mat-icon>insert_photo</mat-icon>
-      </button>
+  <div fxFlex=16>
+    <button mat-icon-button>
+      <mat-icon>insert_photo</mat-icon>
+    </button>
 
   </div>
-  <div fxFlex=16 >
-      <button mat-icon-button (click)='archiveNote()'  >
-          <mat-icon>archive</mat-icon>
-      </button>
+  <div fxFlex=16>
+    <button mat-icon-button (click)='archiveNote()'>
+      <mat-icon>archive</mat-icon>
+    </button>
 
   </div>
-  <div fxFlex=19 >
-      <button mat-icon-button [matMenuTriggerFor]="menu"  >
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)='trashNote()' >Delete Note</button>
-          <button mat-menu-item>Add Label</button>
-      </mat-menu>
+  <div fxFlex=19> 
+    <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)='trashNote()'>Delete Note</button>
+      <button mat-menu-item>Add Label</button>
+    </mat-menu>  -->
+    <button mat-button [matMenuTriggerFor]="mainlist">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #mainlist="matMenu">
+      <button mat-menu-item (click)='trashNote()'>Delete Note</button>
+      <button mat-menu-item [matMenuTriggerFor]="sublist">Add Label</button>
+    </mat-menu>
 
 
+    <mat-menu #sublist="matMenu">
+      <div *ngFor='let labels of getLabels'>
+          <mat-checkbox   type="checkbox"  (click)="addLabel()" color="">
+              {{labels.label}}
+           </mat-checkbox>
+      </div>
+    </mat-menu>
   </div>
+
+
+
+
+
 </div>

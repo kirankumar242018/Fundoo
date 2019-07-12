@@ -28,6 +28,12 @@ export class CreateLabelComponent implements OnInit {
   
 
   ngOnInit() {
+    this.dataService.currentMessage.subscribe(data=>{
+      // console.log("checking data",data) 
+      if(data.type == 'editlabel'){
+        this.getNoteLabels()
+      } 
+     })
     this.getNoteLabels();
     
   }
@@ -52,11 +58,15 @@ export class CreateLabelComponent implements OnInit {
     }
     this.labelService.addLabel('noteLabels',contents).subscribe(data=>{
       console.log("label added..!",data)
+      this.dataService.changeMessage({
+        data:{},
+        type:'editlabel'
+      })
       this.snackBar.open("Note Created Successfully..","close", {
         duration: 3000,
       });
     })
-    this.dialogRef.close();
+    //this.dialogRef.close();
 
   }
   editLabels(labelid){
@@ -68,6 +78,10 @@ export class CreateLabelComponent implements OnInit {
     }
     this.labelService.editLabel('noteLabels/'+labelid+'/updateNoteLabel',contents).subscribe(data=>{
       console.log("edit label..!",data)
+      this.dataService.changeMessage({
+        data:{},
+        type:'editlabel'
+      })
       this.snackBar.open('label edited successfully....!',"close",{
         duration:3000,
       });
@@ -82,6 +96,10 @@ export class CreateLabelComponent implements OnInit {
     }
     this.labelService.deleteLabel('noteLabels/'+contents.id+'/deleteNoteLabel').subscribe(data=>{
       console.log("delete label..!",data)
+      this.dataService.changeMessage({
+        data:{},
+        type:'editlabel'
+      })
       this.snackBar.open('label deleted successfully..!',"close",{
         duration:3000,});
     },

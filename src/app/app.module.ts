@@ -26,6 +26,7 @@ import { ProfilePicComponent } from './components/profile-pic/profile-pic.compon
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { SerchNotesComponent } from './components/serch-notes/serch-notes.component';
 import { CreateLabelComponent } from './components/create-label/create-label.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { CreateLabelComponent } from './components/create-label/create-label.com
     ReactiveFormsModule,
     HttpClientModule,
     ImageCropperModule,
+    MatCheckboxModule,
 
 
   ],

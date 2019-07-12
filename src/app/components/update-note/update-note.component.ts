@@ -49,10 +49,10 @@ export class UpdateNoteComponent implements OnInit {
     })
     this.dialogRef.close();
   }
-  newMessage() {
+  // newMessage() {
     
-    this.dataService.changeMessage({})
-  }
+  //   this.dataService.changeMessage({})
+  // }
   
 
 }
