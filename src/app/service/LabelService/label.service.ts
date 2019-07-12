@@ -16,4 +16,7 @@ export class LabelService {
   editLabel(url,body){
     return this.httpService.post(url,body,true);
   }
+  deleteLabel(url){
+    return this.httpService.delete(url,true);
+  }
 }

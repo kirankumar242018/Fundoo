@@ -99,7 +99,8 @@
 
           <div style="margin-top: 8px;margin-bottom: 8px;">
             <mat-label style="margin-left:15px;"> Lables</mat-label>
-            <div fxLayout="row" fxLayoutAlign="space-around center" *ngFor='let label of allLabels'>
+            <div style="margin-top: 8px;margin-bottom: 8px; margin-left:15px;" fxLayout="row" fxLayoutAlign="space-around center" 
+                        *ngFor='let label of getLabels'>
                 <mat-icon>label</mat-icon>
 
               <a mat-list-item class="round">{{label.label}}</a>

@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   }
 
   allLabels=[]
+  getLabels=[]
   ngOnInit() {
    //this.localstorage_image = localStorage.getItem('image')
    this.changeProfilePic()
@@ -61,7 +62,7 @@ export class DashboardComponent implements OnInit {
   }
   editLable(): void{
     const dialogRef = this.dialog.open(CreateLabelComponent, {
-      width: '50%',
+      width: '30%',
       data: ''
     });
   }
@@ -107,8 +108,8 @@ export class DashboardComponent implements OnInit {
     this.labelService.getLabel().subscribe(data=>{
       console.log("labels data...",data)
       this.allLabels = data['data']['details'];
-      //this.getLabels = this.addLabels.reverse();
-      console.log("got labels..",this.allLabels)
+      this.getLabels = this.allLabels.reverse();
+      console.log("got labels..",this.getLabels)
 
     },
     err=>{

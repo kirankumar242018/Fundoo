@@ -12,7 +12,12 @@ import { MatSnackBar } from '@angular/material';
 export class CreateLabelComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<CreateLabelComponent>,@Inject(MAT_DIALOG_DATA) public data: object,
-  private labelService:LabelService,private dataService:DataServiceService,public snackBar:MatSnackBar) { }
+  private labelService:LabelService,private dataService:DataServiceService,public snackBar:MatSnackBar) { 
+    this.changeText = false;
+
+  }
+  changeText: boolean;
+
   allLabels=[];
   getLabels=[];
   labelsData=[];
@@ -24,10 +29,6 @@ export class CreateLabelComponent implements OnInit {
 
   ngOnInit() {
     this.getNoteLabels();
-    // console.log("mat-dialogue data..",this.data['label'])
-    // this.labelId = this.data['id'];
-    // console.log('label id..!',this.labelId)
-    // this.labelsData = this.data['data'];
     
   }
   
@@ -35,8 +36,8 @@ export class CreateLabelComponent implements OnInit {
     this.labelService.getLabel().subscribe(data=>{
       console.log("labels data...",data)
       this.allLabels = data['data']['details'];
-      //this.getLabels = this.addLabels.reverse();
-      console.log("got labels..",this.allLabels)
+      this.getLabels = this.allLabels.reverse();
+      console.log("get labels..",this.getLabels)
 
     },
     err=>{
@@ -58,9 +59,9 @@ export class CreateLabelComponent implements OnInit {
     this.dialogRef.close();
 
   }
-  editLabels(labelid,labelname){
+  editLabels(labelid){
     var contents={
-      label :labelname,
+      label :this.editname.value,
       isDeleted:false,
       id:labelid,
       userId:this.userId
@@ -69,7 +70,20 @@ export class CreateLabelComponent implements OnInit {
       console.log("edit label..!",data)
       this.snackBar.open('label edited successfully....!',"close",{
         duration:3000,
-      })
+      });
+    },
+    err=>{
+      console.log(err)
+    })
+  }
+  deleteLabels(labelid){
+    var contents={
+      id:labelid
+    }
+    this.labelService.deleteLabel('noteLabels/'+contents.id+'/deleteNoteLabel').subscribe(data=>{
+      console.log("delete label..!",data)
+      this.snackBar.open('label deleted successfully..!',"close",{
+        duration:3000,});
     },
     err=>{
       console.log(err)

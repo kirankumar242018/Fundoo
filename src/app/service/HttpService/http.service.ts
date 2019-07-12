@@ -26,6 +26,18 @@ export class HttpService {
     console.log("data");
     return this.http.post(this.link+url,data,isTokenReq?httpOption:{});
   }
+  delete(url,isTokenReq){
+    //console.log(data);
+    var httpOption={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+ 
+    console.log("data");
+    return this.http.delete(this.link+url,isTokenReq?httpOption:{});
+  }
   
 
   postEncode(url,data,isTokenReq){
