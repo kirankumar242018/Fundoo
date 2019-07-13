@@ -48,4 +48,7 @@ export class NoteService {
   addLabeltoNote(url,body){
     return this.httpService.post(url,body,true);
   }
+  deleteLabelNote(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataServiceService } from '../../service/DataService/data-service.service'
 import { NoteService } from '../../service/NoteService/note.service';
 import { MatSnackBar, MatCard } from '@angular/material';
@@ -22,7 +22,7 @@ export class IconComponent implements OnInit {
 
   @Input() childMessage;
   @Input() receivedLabels;
-
+  @Output() reloadEvent =  new EventEmitter<any>();
   trashNote() {
     var contents = {
       noteIdList: [this.childMessage['id']],
@@ -92,17 +92,20 @@ export class IconComponent implements OnInit {
       console.log(err)
     });
   }
-  addLabel(labelid){
+  addLabelToNotes(labelid){
     var contents={
       noteId:[this.childMessage['id']],
       lableId:labelid
     }
     this.noteService.addLabeltoNote('notes/'+contents.noteId+'/addLabelToNotes/'+contents.lableId+'/add',contents).subscribe(data=>{
       console.log('addLabel contents',data)
-      
+      this.reloadEvent.emit()
       this.snackBar.open("Label Added to Note successfully...","close",{duration:3000,});
 
-    })
+    },
+    err=>{
+      console.log(err)
+    });
     
   }
 

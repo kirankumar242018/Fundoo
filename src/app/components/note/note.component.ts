@@ -36,6 +36,11 @@ export class NoteComponent implements OnInit {
     console.log("event emitter printed...")
     this.getAllCard();
   }
+  reloadevent(event){
+    console.log("checking Label add/delete event....!")
+    this.getAllCard();
+  }
+
 
   getAllCard() {
     this.noteService.getNote().subscribe(data => {

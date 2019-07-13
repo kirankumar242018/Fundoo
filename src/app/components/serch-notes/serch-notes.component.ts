@@ -19,7 +19,7 @@ export class SerchNotesComponent implements OnInit {
     this.dataService.currentMessage.subscribe(data=>{
       if(data.type == 'search'){
           console.log('searching data from dataService..',data)
-          this.value = data.data;
+          this.value = data.data; // sended data are like json format...
           //console.log("all_notes",this.all_notes)
           this.card = this.findCard(this.all_notes,this.value)
           console.log("searching card...",this.card)

@@ -1,10 +1,11 @@
-import { Component, OnInit, Input,Inject } from '@angular/core';
+import { Component, OnInit, Input,Inject, Output,EventEmitter } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { NoteService } from '../../service/NoteService/note.service';
 import {DataServiceService} from '../../service/DataService/data-service.service'
 import { MatSnackBar } from '@angular/material';
 import { LabelService } from '../../service/LabelService/label.service';
+
 @Component({
   selector: 'app-diaplay-note',
   templateUrl: './diaplay-note.component.html',
@@ -12,12 +13,15 @@ import { LabelService } from '../../service/LabelService/label.service';
 })
 export class DiaplayNoteComponent implements OnInit {
   @Input() allCards;
-  
+  @Output() addlabelEvent = new EventEmitter<any>();
+  @Output() deletelabelEvent = new EventEmitter<any>();
   title:string
   description:string
   card:any
   allLabels=[]
   getLabels=[]
+  removable = true;
+
   constructor(public dialog: MatDialog,public noteService:NoteService,private dataService: DataServiceService,
     public snackBar:MatSnackBar,private labelService:LabelService ) { }
 
@@ -28,6 +32,11 @@ ngOnInit() {
     
   })
 
+}
+reloadAction(event){
+  console.log("reloadEvent emitter..");
+  this.getNoteLabels();
+  this.addlabelEvent.emit();
 }
 modifyNote(note): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
@@ -79,7 +88,20 @@ isPined(note)
         console.log(err)
       });
     }
+    deleteNoteLabel(noteid,labelsid){
+      var contents={
+        noteId:noteid,
+        labelId:labelsid
+      }
+      this.noteService.deleteLabelNote('notes/'+contents.noteId+'/addLabelToNotes/'+contents.labelId+'/remove',contents).subscribe(data=>{
+        console.log('deleteLabelNote..!',data)
+        this.deletelabelEvent.emit();
+        this.snackBar.open("Label to Note deleted successfully...","close",{duration:3000,});
 
-  
+      },
+      err=>{
+        console.log(err)
+      });
+    }
 
 }

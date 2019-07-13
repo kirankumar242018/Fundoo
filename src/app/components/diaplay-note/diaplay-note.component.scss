@@ -1,7 +1,7 @@
 .cards{
 
     width: 275px;
-    height: 100px;
+    height: 125px;
     margin-left: 28px;
     margin-bottom: 12px;
     margin-top: 12px;
@@ -34,4 +34,13 @@ div .pinned{
 }
 div:hover .pinned{
     visibility:visible;
+}
+::ng-deep .mat-dialog-container{
+    padding:0px;
+}
+ .mat-chip-list-wrapper .mat-standard-chip, .mat-chip-list-wrapper input.mat-input-element {
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
 }

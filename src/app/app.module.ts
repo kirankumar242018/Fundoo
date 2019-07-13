@@ -27,6 +27,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { SerchNotesComponent } from './components/serch-notes/serch-notes.component';
 import { CreateLabelComponent } from './components/create-label/create-label.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HttpClientModule,
     ImageCropperModule,
     MatCheckboxModule,
+    MatChipsModule,
 
 
   ],

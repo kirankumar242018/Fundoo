@@ -60,7 +60,7 @@
         <input placeholder="Enter Label name" value="labelname" >
       </div>
       <div *ngFor='let labels of receivedLabels'>
-          <mat-checkbox  (click)="addLabel(labels.id)" color="">
+          <mat-checkbox  (click)="addLabelToNotes(labels.id)" color="">
               {{labels.label}}
            </mat-checkbox>
       </div>
