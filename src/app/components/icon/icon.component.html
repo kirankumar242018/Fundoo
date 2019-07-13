@@ -57,10 +57,10 @@
     <mat-menu #sublist="matMenu">
       <h4>Label note</h4>
       <div>
-        <input placeholder="Enter Label name" value="" >
+        <input placeholder="Enter Label name" value="labelname" >
       </div>
       <div *ngFor='let labels of receivedLabels'>
-          <mat-checkbox   type="checkbox"  (click)="addLabel()" color="">
+          <mat-checkbox  (click)="addLabel(labels.id)" color="">
               {{labels.label}}
            </mat-checkbox>
       </div>

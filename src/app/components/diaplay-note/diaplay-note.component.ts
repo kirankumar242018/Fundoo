@@ -80,6 +80,6 @@ isPined(note)
       });
     }
 
-
+  
 
 }

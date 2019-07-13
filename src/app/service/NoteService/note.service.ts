@@ -45,4 +45,7 @@ export class NoteService {
     return this.httpService.postEncode(url,this.encode(body),true);
 
   }
+  addLabeltoNote(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }

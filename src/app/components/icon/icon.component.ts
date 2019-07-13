@@ -20,7 +20,7 @@ export class IconComponent implements OnInit {
     this.getNoteLabels()
   }
 
-  @Input() childMessage
+  @Input() childMessage;
   @Input() receivedLabels;
 
   trashNote() {
@@ -92,6 +92,18 @@ export class IconComponent implements OnInit {
       console.log(err)
     });
   }
-  
+  addLabel(labelid){
+    var contents={
+      noteId:[this.childMessage['id']],
+      lableId:labelid
+    }
+    this.noteService.addLabeltoNote('notes/'+contents.noteId+'/addLabelToNotes/'+contents.lableId+'/add',contents).subscribe(data=>{
+      console.log('addLabel contents',data)
+      
+      this.snackBar.open("Label Added to Note successfully...","close",{duration:3000,});
+
+    })
+    
+  }
 
 }
