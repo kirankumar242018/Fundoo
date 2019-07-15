@@ -54,13 +54,13 @@
     </mat-menu>
 
 
-    <mat-menu #sublist="matMenu">
+    <mat-menu #sublist="matMenu" >
       <h4>Label note</h4>
-      <div>
-        <input placeholder="Enter Label name" value="labelname" >
+      <div (click)="$event.stopPropagation()">
+        <input type="text" [(ngModel)]="search" placeholder="Enter Label name"  />
       </div>
-      <div *ngFor='let labels of receivedLabels'>
-          <mat-checkbox  (click)="addLabelToNotes(labels.id)" color="">
+      <div (click)="$event.stopPropagation()" *ngFor="let labels of receivedLabels | searchLabelFilter : search">
+          <mat-checkbox (click)="$event.stopPropagation()" (click)="addLabelToNotes(labels.id)" color="">
               {{labels.label}}
            </mat-checkbox>
       </div>

@@ -62,7 +62,7 @@ export class CreateLabelComponent implements OnInit {
         data:{},
         type:'editlabel'
       })
-      this.snackBar.open("Note Created Successfully..","close", {
+      this.snackBar.open("Label Created Successfully..","close", {
         duration: 3000,
       });
     })
@@ -82,7 +82,7 @@ export class CreateLabelComponent implements OnInit {
         data:{},
         type:'editlabel'
       })
-      this.snackBar.open('label edited successfully....!',"close",{
+      this.snackBar.open('Label edited successfully....!',"close",{
         duration:3000,
       });
     },

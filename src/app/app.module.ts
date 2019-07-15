@@ -28,6 +28,7 @@ import { SerchNotesComponent } from './components/serch-notes/serch-notes.compon
 import { CreateLabelComponent } from './components/create-label/create-label.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
+import { SearchLabelPipe } from './pipe/search-label.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {MatChipsModule} from '@angular/material/chips';
     ProfilePicComponent,
     SerchNotesComponent,
     CreateLabelComponent,
+    SearchLabelPipe,
    
     
   ],
