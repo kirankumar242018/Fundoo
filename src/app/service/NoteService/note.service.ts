@@ -51,4 +51,7 @@ export class NoteService {
   deleteLabelNote(url,body){
     return this.httpService.post(url,body,true);
   }
+  addremainder(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }

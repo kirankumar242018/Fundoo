@@ -3,6 +3,8 @@ import { DataServiceService } from '../../service/DataService/data-service.servi
 import { NoteService } from '../../service/NoteService/note.service';
 import { MatSnackBar, MatCard } from '@angular/material';
 import { LabelService } from '../../service/LabelService/label.service';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
@@ -21,10 +23,12 @@ export class IconComponent implements OnInit {
   ngOnInit() {
     this.getNoteLabels()
   }
-  search:string='kiran'
+  search:string;
+  datetimepick:[];
   @Input() childMessage;
   @Input() receivedLabels;
   @Output() reloadEvent =  new EventEmitter<any>();
+  userid=localStorage.getItem('userId')
   trashNote() {
     var contents = {
       noteIdList: [this.childMessage['id']],
@@ -109,6 +113,20 @@ export class IconComponent implements OnInit {
       console.log(err)
     });
     
+  }
+  addRemainder(datetimepick){
+    var contents={
+      remainder:[datetimepick],
+      noteIdList:[this.childMessage['id']],
+      userId:this.userid
+    }
+    console.log("icon date and time values...!",datetimepick)
+    this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+      console.log("remainder dtae and time...!",data)
+      this.snackBar.open("remainder added to Note successfully...","close",{duration:3000,});
+
+    })
+
   }
 
 }

@@ -11,8 +11,13 @@
     <div class="divider"></div>
     <div class="button" fxLayout="row" fxLayoutAlign="center center">
       <mat-card-content>
-        <input type="file" (change)="getprofilephoto($event)" 
-         color="" accept="image/*"/>
+       
+            <input hidden type="file" #uploader (change)="getprofilephoto($event)" 
+            color=""  accept="image/*"/>
+            <button (click)="uploader.click()" >
+                Upload a photo
+            </button>
+       
           
       </mat-card-content>
       <div>

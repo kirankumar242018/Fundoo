@@ -55,6 +55,8 @@ export class ProfilePicComponent implements OnInit {
       this.snackBar.open("profile pic uploaded  Successfully..","close", {
         duration: 3000,
       });
+      this.dialogRef.close();
+
     })
   }
  

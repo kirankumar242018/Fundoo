@@ -29,6 +29,7 @@ import { CreateLabelComponent } from './components/create-label/create-label.com
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import { SearchLabelPipe } from './pipe/search-label.pipe';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { SearchLabelPipe } from './pipe/search-label.pipe';
     SerchNotesComponent,
     CreateLabelComponent,
     SearchLabelPipe,
-   
+    
     
   ],
   imports: [
@@ -64,6 +65,8 @@ import { SearchLabelPipe } from './pipe/search-label.pipe';
     ImageCropperModule,
     MatCheckboxModule,
     MatChipsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
 
 
   ],
