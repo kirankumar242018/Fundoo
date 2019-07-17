@@ -28,6 +28,20 @@ export class NoteComponent implements OnInit {
       else if(data.type == 'trash'){
         this.getAllCard();
       }
+      else if(data.type=='setRemainder' || data.type == 'setRemainderToday' || data.type == 'setRemainderTommorow' 
+                                        || data.type == 'setRemainderNextWeek'  ){
+        this.getAllCard();
+      }
+      // else if(data.type == 'setRemainderToday'){
+      //   this.getAllCard();
+      // }
+      // else if(data.type == 'setRemainderTommorow'){
+      //   this.getAllCard();
+      // }
+      // else if(data.type == 'setRemainderNextWeek'){
+      //   this.getAllCard();
+      // }
+      
     },
     
     )

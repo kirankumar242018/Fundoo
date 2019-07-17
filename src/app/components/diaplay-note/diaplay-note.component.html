@@ -48,6 +48,15 @@
                 <div class="description" fxLayoutGap="10px"  >
                     <mat-card-title style="font-size:16px;font-family:Roboto,Arial,sans-serif;">{{note.description}}</mat-card-title>
                 </div>
+                <div fxLayout="row wrap"  >
+                    <mat-chip-list >
+                        <mat-chip *ngFor="let remainder of note.reminder" [removable]="removable" (removed)="deleteRemainder()"  >
+                            {{remainder | date:'MMM d, y, h:mm a'}}
+                            <mat-icon matChipRemove *ngIf="removable" >cancel</mat-icon>
+                        </mat-chip>
+                             
+                    </mat-chip-list>
+                </div>
                
                <div fxLayout="row wrap"  >
                     <mat-chip-list >

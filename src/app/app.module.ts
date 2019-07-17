@@ -30,6 +30,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import { SearchLabelPipe } from './pipe/search-label.pipe';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
   ],
-  providers: [AuthGuard,AuthserviceService],
+providers: [AuthGuard,AuthserviceService,DatePipe],
   entryComponents : [UpdateNoteComponent,ProfilePicComponent,CreateLabelComponent],
   bootstrap: [AppComponent]
 })

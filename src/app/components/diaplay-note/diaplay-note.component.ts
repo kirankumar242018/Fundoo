@@ -21,7 +21,7 @@ export class DiaplayNoteComponent implements OnInit {
   allLabels=[]
   getLabels=[]
   removable = true;
-
+  //date = new Date();
   constructor(public dialog: MatDialog,public noteService:NoteService,private dataService: DataServiceService,
     public snackBar:MatSnackBar,private labelService:LabelService ) { }
 

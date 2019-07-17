@@ -4,6 +4,7 @@ import { NoteService } from '../../service/NoteService/note.service';
 import { MatSnackBar, MatCard } from '@angular/material';
 import { LabelService } from '../../service/LabelService/label.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-icon',
@@ -14,7 +15,10 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 export class IconComponent implements OnInit {
   // isdeleted = true;
   constructor(public dataService: DataServiceService, public noteService: NoteService, private snackBar: MatSnackBar,
-    private labelService:LabelService) { }
+    private labelService:LabelService) { 
+      //this.jstoday = formatDate(this.today, "dddd, mmmm dS, yyyy, h:MM:ss TT", 'en-US', '+0530');
+
+    }
   color=[['#FFFFFF','#f28b82','#fbbc04','#fff475'],['#ccff90','#a7ffeb','#cbf0f8','#aecbfa'],['#d7aefb','#fdcfe8','#e6c9a8','#e8eaed']];
   allLabels=[]
   getLabels=[]
@@ -29,6 +33,11 @@ export class IconComponent implements OnInit {
   @Input() receivedLabels;
   @Output() reloadEvent =  new EventEmitter<any>();
   userid=localStorage.getItem('userId')
+
+  // today= new Date();
+  // jstoday = '';
+
+
   trashNote() {
     var contents = {
       noteIdList: [this.childMessage['id']],
@@ -114,17 +123,82 @@ export class IconComponent implements OnInit {
     });
     
   }
-  addRemainder(datetimepick){
+  setRemainder(datetimepick){
+    
     var contents={
-      remainder:[datetimepick],
+      reminder:[datetimepick],
       noteIdList:[this.childMessage['id']],
       userId:this.userid
     }
     console.log("icon date and time values...!",datetimepick)
     this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
-      console.log("remainder dtae and time...!",data)
+      console.log("remainder date and time...!",data)
+      this.dataService.changeMessage({
+        data:{},
+        type:'setRemainder'
+      })
       this.snackBar.open("remainder added to Note successfully...","close",{duration:3000,});
 
+    })
+
+  }
+  setRemainderToday(){
+    var todayDate = new Date();
+    todayDate.setHours(20,0,0)
+    var contents={
+      reminder:[todayDate],
+      noteIdList:[this.childMessage['id']],
+      userId:this.userid
+    }
+    this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+      console.log("remainder dtae and time...!",data)
+      this.dataService.changeMessage({
+        data:{},
+        type:'setRemainderToday'
+      })
+      this.snackBar.open("today remainder added to Note successfully...","close",{duration:3000,});
+
+    })
+
+    
+  }
+  setRemainderTommorow(){
+    var today = new Date();
+    var tommorow=new Date(today.setDate(today.getDate() + 1));
+    tommorow.setHours(20,0,0)
+    var contents={
+      reminder:[tommorow],
+      noteIdList:[this.childMessage['id']],
+      userId:this.userid
+    }
+    this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+      console.log("remainder date and time...!",data)
+      this.dataService.changeMessage({
+        data:{},
+        type:'setRemainderTommorow'
+      })
+      this.snackBar.open("tommorow remainder added to Note successfully...","close",{duration:3000,});
+
+    })
+
+  }
+
+  setRemainderNextWeek(){
+    var today = new Date();
+    var nextWeek = new Date(today.setDate(today.getDate() + 7));
+    nextWeek.setHours(20,0,0);
+    var contents={
+      reminder:[nextWeek],
+      noteIdList:[this.childMessage['id']],
+      userId:this.userid
+    }
+    this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+      console.log("remainder date and time...!",data)
+      this.dataService.changeMessage({
+        data:{},
+        type:'setRemainderNextWeek'
+      })
+      this.snackBar.open("NextWeek Remainder added to Note Succesfully....!","close",{duration:3000,});
     })
 
   }
