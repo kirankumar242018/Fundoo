@@ -29,7 +29,7 @@ export class NoteComponent implements OnInit {
         this.getAllCard();
       }
       else if(data.type=='setRemainder' || data.type == 'setRemainderToday' || data.type == 'setRemainderTommorow' 
-                                        || data.type == 'setRemainderNextWeek'  ){
+              || data.type == 'setRemainderNextWeek' || data.type == 'removeRemainder'  ){
         this.getAllCard();
       }
       // else if(data.type == 'setRemainderToday'){

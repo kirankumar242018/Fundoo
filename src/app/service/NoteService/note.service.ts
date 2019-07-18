@@ -51,7 +51,13 @@ export class NoteService {
   deleteLabelNote(url,body){
     return this.httpService.post(url,body,true);
   }
-  addremainder(url,body){
+  addRemainder(url,body){
+    return this.httpService.post(url,body,true);
+  }
+  removeRemainder(url,body){
+    return this.httpService.post(url,body,true);
+  }
+  searchUserList(url,body){
     return this.httpService.post(url,body,true);
   }
 }

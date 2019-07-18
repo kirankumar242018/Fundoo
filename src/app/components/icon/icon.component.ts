@@ -5,6 +5,8 @@ import { MatSnackBar, MatCard } from '@angular/material';
 import { LabelService } from '../../service/LabelService/label.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {formatDate } from '@angular/common';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import{CollaboratorsComponent} from '../../components/collaborators/collaborators.component'
 
 @Component({
   selector: 'app-icon',
@@ -15,7 +17,7 @@ import {formatDate } from '@angular/common';
 export class IconComponent implements OnInit {
   // isdeleted = true;
   constructor(public dataService: DataServiceService, public noteService: NoteService, private snackBar: MatSnackBar,
-    private labelService:LabelService) { 
+    private labelService:LabelService,public dialog: MatDialog) { 
       //this.jstoday = formatDate(this.today, "dddd, mmmm dS, yyyy, h:MM:ss TT", 'en-US', '+0530');
 
     }
@@ -37,6 +39,14 @@ export class IconComponent implements OnInit {
   // today= new Date();
   // jstoday = '';
 
+
+  
+  collaborator(): void{
+    const dialogRef = this.dialog.open(CollaboratorsComponent,{
+      width:'50%',
+      data:''
+    })
+  }
 
   trashNote() {
     var contents = {
@@ -131,7 +141,7 @@ export class IconComponent implements OnInit {
       userId:this.userid
     }
     console.log("icon date and time values...!",datetimepick)
-    this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+    this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
       console.log("remainder date and time...!",data)
       this.dataService.changeMessage({
         data:{},
@@ -150,7 +160,7 @@ export class IconComponent implements OnInit {
       noteIdList:[this.childMessage['id']],
       userId:this.userid
     }
-    this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+    this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
       console.log("remainder dtae and time...!",data)
       this.dataService.changeMessage({
         data:{},
@@ -171,7 +181,7 @@ export class IconComponent implements OnInit {
       noteIdList:[this.childMessage['id']],
       userId:this.userid
     }
-    this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+    this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
       console.log("remainder date and time...!",data)
       this.dataService.changeMessage({
         data:{},
@@ -192,7 +202,7 @@ export class IconComponent implements OnInit {
       noteIdList:[this.childMessage['id']],
       userId:this.userid
     }
-    this.noteService.addremainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+    this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
       console.log("remainder date and time...!",data)
       this.dataService.changeMessage({
         data:{},

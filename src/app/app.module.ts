@@ -31,6 +31,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { SearchLabelPipe } from './pipe/search-label.pipe';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DatePipe } from '@angular/common';
+import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { DatePipe } from '@angular/common';
     SerchNotesComponent,
     CreateLabelComponent,
     SearchLabelPipe,
+    CollaboratorsComponent,
     
     
   ],
@@ -72,7 +74,7 @@ import { DatePipe } from '@angular/common';
 
   ],
 providers: [AuthGuard,AuthserviceService,DatePipe],
-  entryComponents : [UpdateNoteComponent,ProfilePicComponent,CreateLabelComponent],
+  entryComponents : [UpdateNoteComponent,ProfilePicComponent,CreateLabelComponent,CollaboratorsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

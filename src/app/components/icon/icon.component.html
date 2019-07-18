@@ -52,7 +52,7 @@
                           <div id="divider"></div>
 
                           <div fxLayout="row" fxLayoutAlign="end end" >
-                              <button type="text" (click)="isOpen=false" (click)="setRemainder(datetimepick)" 
+                              <button type="text"  (click)="setRemainder(datetimepick)" 
                                   style="padding: 0;border: none; background: none; font-size: 16px">Save</button>
                           </div>
                     </div>
@@ -60,7 +60,7 @@
 
   </div>
   <div fxFlex=16>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="collaborator()" >
       <mat-icon>person_add</mat-icon>
     </button>
   </div>

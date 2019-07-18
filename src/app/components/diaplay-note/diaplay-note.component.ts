@@ -21,6 +21,7 @@ export class DiaplayNoteComponent implements OnInit {
   allLabels=[]
   getLabels=[]
   removable = true;
+  userid = localStorage.getItem('userId');
   //date = new Date();
   constructor(public dialog: MatDialog,public noteService:NoteService,private dataService: DataServiceService,
     public snackBar:MatSnackBar,private labelService:LabelService ) { }
@@ -102,6 +103,21 @@ isPined(note)
       err=>{
         console.log(err)
       });
+    }
+    deleteRemainder(noteid,notereminder){
+      var contents={
+        reminder:[notereminder],
+        noteIdList:[noteid],
+        userId:this.userid
+      }
+      this.noteService.removeRemainder('notes/removeReminderNotes',contents).subscribe(data=>{
+        console.log('reamove remainder from note',data)
+        this.dataService.changeMessage({
+          data:{},
+          type:'removeRemainder'
+        })
+        this.snackBar.open("Remainder removed from note..!","close",{duration:3000,});
+      })
     }
 
 }

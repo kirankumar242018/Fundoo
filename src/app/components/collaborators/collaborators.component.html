@@ -1,0 +1,30 @@
+<div fxFlex=100>
+    <div>
+      <h3>Collaborators</h3>
+    </div>
+    <div class="divider"></div>
+    <div fxLayout="row" fxLayoutGap="10px" >
+          <div class="profile-image" style="border-radius: 100%;">
+            <img mat-card-avatar style="height: 50px;width: 50px;" [src]="imageurl" >
+
+          </div>
+          <div>
+              <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;font-weight: bold;">{{username}}(Owner)
+              </mat-card-title>
+              <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;">{{email}}
+              </mat-card-title>
+          </div>
+    </div>
+      <div fxLayout="row" fxLayoutGap="10px"  >
+        <img mat-card-avatar style="height: 50px;width: 50px;" src="../../../assets/images/add_person.png" >
+        <input type="text" class="emailList"  placeholder="Person or email to share with" (keyup)='searchUserList($event)' >
+
+      </div>
+    <div class="divider"></div>
+
+    <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="60px"  >
+        <button type="text" class="save" (click)="cancel()"  >Cancel</button>
+        <button type="text" class="save" (click)="addCollabrator()" >Save</button>
+    </div>
+
+</div>
