@@ -60,4 +60,7 @@ export class NoteService {
   searchUserList(url,body){
     return this.httpService.post(url,body,true);
   }
+  addCollaborator(url,body){
+    return this.httpService.post(url,body,true);
+  }
 }

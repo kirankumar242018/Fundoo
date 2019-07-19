@@ -81,14 +81,14 @@
       fixedTopGap="56" class="sidenav-content">
       <mat-nav-list>
         <div class="sidenavbar">
-          <div (click)="HeaderName='FundooNotes'"
+          <div class="note" (click)="HeaderName='FundooNotes'"
             [ngClass]="{'sidenav':HeaderName != 'FundooNotes','sidenav-list':HeaderName == 'FundooNotes'}">
             <button mat-button routerLink="note" class="round" (click)='Note'>
               <mat-icon style="margin-right:24px;">lightbulb_outline</mat-icon>Note
             </button>
           </div>
 
-          <div style="margin-top: 8px;margin-bottom: 8px;" (click)="HeaderName='Remainder'"
+          <div class="remainder" (click)="HeaderName='Remainder'"
             [ngClass]="{'sidenav':HeaderName != 'Remainder','sidenav-list':HeaderName == 'Remainder'}">
             <button mat-button routerLink="." class="round" (click)='Remainder'>
               <mat-icon style="margin-right:24px;">notifications_none</mat-icon>Remainder
@@ -97,25 +97,25 @@
 
           <div class="divider"></div>
 
-          <div style="margin-top: 8px;margin-bottom: 8px;">
-            <mat-label style="margin-left:15px;"> Lables</mat-label>
-            <div style="margin-top: 8px;margin-bottom: 8px; margin-left:15px;" fxLayout="row" fxLayoutAlign="space-around center" 
-                        *ngFor='let label of getLabels'>
-                <mat-icon>label</mat-icon>
+          <div class="label" >
+              <mat-label> Lables</mat-label>
+              <div  fxLayout="row" fxLayoutAlign="space-around center" 
+                          *ngFor='let label of getLabels'>
+                  <mat-icon>label</mat-icon>
 
-              <a mat-list-item class="round">{{label.label}}</a>
-            </div>
-
-            <div (click)="HeaderName='EditLable'"
-              [ngClass]="{'sidenav':HeaderName != 'EditLable','sidenav-list':HeaderName == 'EditLable'}"
-              (click)='editLable()'>
-              <button mat-button routerLink="." class="round">
-                <mat-icon style="margin-right:24px;">create</mat-icon>Edit Lables
-              </button>
-            </div>
+                <a mat-list-item class="round">{{label.label}}</a>
+              </div>
           </div>
+          <div class='editlabel' (click)="HeaderName='EditLable'"
+                [ngClass]="{'sidenav':HeaderName != 'EditLable','sidenav-list':HeaderName == 'EditLable'}"
+                (click)='editLable()'>
+                <button mat-button routerLink="." class="round">
+                  <mat-icon style="margin-right:24px;">create</mat-icon>Edit Lables
+                </button>
+          </div>
+          
           <div class="divider"></div>
-          <div style="margin-top: 8px;margin-bottom: 8px;" (click)="HeaderName='Archive'"
+          <div class="archive"  (click)="HeaderName='Archive'"
             [ngClass]="{'sidenav':HeaderName != 'Archive','sidenav-list':HeaderName == 'Archive'}">
             <button mat-button routerLink="archive" class="round" (click)='Archive'>
               <mat-icon style="margin-right:24px;">archive</mat-icon>Archive
@@ -124,7 +124,7 @@
 
 
 
-          <div (click)="HeaderName='Trash'"
+          <div class="trash" (click)="HeaderName='Trash'"
             [ngClass]="{'sidenav':HeaderName != 'Trash','sidenav-list':HeaderName == 'Trash'}">
             <button mat-button routerLink="trash" class="round" (click)='Trash'>
               <mat-icon style="margin-right:24px;">delete</mat-icon>Trash

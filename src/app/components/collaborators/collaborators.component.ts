@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../../service/NoteService/note.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-collaborators',
@@ -14,7 +15,7 @@ export class CollaboratorsComponent implements OnInit {
   imageurl;
   localstorage_image;
   values;
-   constructor(private noteService:NoteService) { }
+   constructor(private noteService:NoteService,public snackBar:MatSnackBar) { }
   
   ngOnInit() {
     this.email = localStorage.getItem('email');
@@ -26,6 +27,8 @@ export class CollaboratorsComponent implements OnInit {
 
   }
   user_list=[]
+  add_col=[]
+  // select=String;
   searchUserList(event){
     console.log("user list .....!",event)
     this.values=event.target.value
@@ -40,4 +43,24 @@ export class CollaboratorsComponent implements OnInit {
   })
 
   }
+  addCollaborator(user){
+    console.log("collaborators user data...!",user)
+    var contents={
+      id:user.id,
+      data:{
+        firstName:user.firstName,
+        lastName:user.lastName,
+        email:user.email,
+        userId:user.userId
+      }
+    }
+    this.noteService.addCollaborator('notes/'+contents.id+'/AddcollaboratorsNotes',contents).subscribe(data=>{
+      console.log("adding collaborators...!",data)
+      this.snackBar.open("note collaborated successfully..!","close",{duration:3000,})
+
+
+    })
+
+  }
+
 }

@@ -1,4 +1,4 @@
-<div fxFlex=100>
+<div class="collaborators" fxFlex=100>
     <div>
       <h3>Collaborators</h3>
     </div>
@@ -17,8 +17,15 @@
     </div>
       <div fxLayout="row" fxLayoutGap="10px"  >
         <img mat-card-avatar style="height: 50px;width: 50px;" src="../../../assets/images/add_person.png" >
-        <input type="text" class="emailList"  placeholder="Person or email to share with" (keyup)='searchUserList($event)' >
+        <div *ngFor='let value of  add_col' >
 
+          <p>{{value}}</p>
+        </div>
+        <input type="text" class="emailList" [matMenuTriggerFor]="belowMenu"   [(ngModel)]='select'  placeholder="Person or email to share with" (keyup)='searchUserList($event)' >
+          
+              <mat-menu #belowMenu="matMenu" yPosition="below"  >
+                  <button mat-menu-item *ngFor='let user of user_list' (click)="addCollaborator(user)" >{{user.email}}</button>
+              </mat-menu>
       </div>
     <div class="divider"></div>
 
@@ -28,3 +35,15 @@
     </div>
 
 </div>
+
+
+
+
+
+
+
+<!-- <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+<mat-menu #belowMenu="matMenu" yPosition="below">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu> -->

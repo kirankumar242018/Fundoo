@@ -29,10 +29,9 @@
       </div>
 
     </div>
-    <div fxLayoutAlign="row" fxLayoutAlign="center center" *ngFor='let labels of getLabels'
-      (mouseover)="changeText=true" (mouseout)="changeText=false">
+    <div fxLayoutAlign="row" fxLayoutAlign="center center" *ngFor='let labels of getLabels'>
 
-      <button mat-icon-button (click)="deleteLabels(labels.id)">
+      <button mat-icon-button (click)="deleteLabels(labels.id)" (mouseover)="changeText=true" (mouseout)="changeText=false" >
         <span *ngIf="!changeText">
           <mat-icon>label</mat-icon>
         </span>
@@ -57,3 +56,4 @@
     </div>
   </mat-card>
 </div>
+
