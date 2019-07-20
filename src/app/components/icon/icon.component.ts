@@ -25,9 +25,10 @@ export class IconComponent implements OnInit {
   allLabels=[]
   getLabels=[]
   //searchLabel:string;
-
+  
   ngOnInit() {
     this.getNoteLabels()
+    console.log('Child meassage..!',this.childMessage)
   }
   search:string;
   datetimepick:[];
@@ -38,13 +39,13 @@ export class IconComponent implements OnInit {
 
   // today= new Date();
   // jstoday = '';
-
+ 
 
   
-  collaborator(): void{
+  collaborator(childMessage): void{
     const dialogRef = this.dialog.open(CollaboratorsComponent,{
       width:'50%',
-      data:''
+      data: {childMessage}
     })
   }
 

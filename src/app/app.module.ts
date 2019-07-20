@@ -32,6 +32,7 @@ import { SearchLabelPipe } from './pipe/search-label.pipe';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DatePipe } from '@angular/common';
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,8 @@ import { CollaboratorsComponent } from './components/collaborators/collaborators
     MatChipsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    MatAutocompleteModule,
+
 
 
   ],

@@ -14,18 +14,41 @@
               <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;">{{email}}
               </mat-card-title>
           </div>
+          
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px" *ngFor='let coll of add_col' >
+        <div class="profile-image" style="border-radius: 100%;">
+            <img mat-card-avatar style="height: 50px;width: 50px;" src="https://ya-webdesign.com/images/no-avatar-png-1.png" >
+        </div>
+        <div>
+            <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;font-weight: bold;">{{coll.firstName}}
+              </mat-card-title>
+              <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;">{{coll.email}}
+              </mat-card-title>
+        </div>
+       
     </div>
       <div fxLayout="row" fxLayoutGap="10px"  >
+        
         <img mat-card-avatar style="height: 50px;width: 50px;" src="../../../assets/images/add_person.png" >
-        <div *ngFor='let value of  add_col' >
+        <!-- <div *ngFor='let value of  add_col' >
 
           <p>{{value}}</p>
-        </div>
-        <input type="text" class="emailList" [matMenuTriggerFor]="belowMenu"   [(ngModel)]='select'  placeholder="Person or email to share with" (keyup)='searchUserList($event)' >
+        </div> -->
+        <!-- <input type="text" class="emailList" [matMenuTriggerFor]="belowMenu"   [(ngModel)]='select'  placeholder="Person or email to share with" (keyup)='searchUserList($event)' >
           
               <mat-menu #belowMenu="matMenu" yPosition="below"  >
-                  <button mat-menu-item *ngFor='let user of user_list' (click)="addCollaborator(user)" >{{user.email}}</button>
-              </mat-menu>
+                  <button mat-menu-item *ngFor='let user of user_list' [value]='user.email' (click)="addCollaborator(user)" >{{user.email}}</button>
+              </mat-menu> -->
+              <form>
+                <mat-form-field>
+                  <input type="text" class="emailList" matInput placeholder="Person or email to share with" [matAutocomplete]='auto' (keyup)='searchUserList($event)' />
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="display" >
+                    <mat-option *ngFor='let user of user_list' [value]='user.email' (click)="addCollaborator(user)" >{{user.email}}</mat-option>
+                  </mat-autocomplete>
+
+                </mat-form-field>
+            </form>
       </div>
     <div class="divider"></div>
 

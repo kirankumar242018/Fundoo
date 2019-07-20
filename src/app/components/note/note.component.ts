@@ -32,6 +32,9 @@ export class NoteComponent implements OnInit {
               || data.type == 'setRemainderNextWeek' || data.type == 'removeRemainder'  ){
         this.getAllCard();
       }
+      else if(data.type=='addcollaborator'){
+        this.getAllCard();
+      }
       // else if(data.type == 'setRemainderToday'){
       //   this.getAllCard();
       // }
@@ -61,7 +64,7 @@ export class NoteComponent implements OnInit {
       this.notes = data['data']['data'];
       this.get_notes = this.notes.reverse();
       this.displayNote=[]
-      console.log('received refresh..',this.refresh)
+      console.log('get_Notes..',this.get_notes)
      
       for (let i = 0; i < this.notes.length; i++) {
         if ((this.get_notes[i]['isDeleted'] == false) && (this.get_notes[i]['isArchived'] == false)) {
