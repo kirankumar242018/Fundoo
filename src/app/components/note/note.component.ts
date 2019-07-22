@@ -32,16 +32,10 @@ export class NoteComponent implements OnInit {
               || data.type == 'setRemainderNextWeek' || data.type == 'removeRemainder'  ){
         this.getAllCard();
       }
-      else if(data.type=='addcollaborator'){
+      else if(data.type=='addCollaborator' || data.type == 'deleteCollaborator' ){
         this.getAllCard();
       }
-      // else if(data.type == 'setRemainderToday'){
-      //   this.getAllCard();
-      // }
-      // else if(data.type == 'setRemainderTommorow'){
-      //   this.getAllCard();
-      // }
-      // else if(data.type == 'setRemainderNextWeek'){
+      // else if(data.type == 'deleteCollaborator'){
       //   this.getAllCard();
       // }
       

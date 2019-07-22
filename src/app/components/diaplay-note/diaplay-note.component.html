@@ -45,10 +45,10 @@
                         </button>
                     </div>
                 </div>
-                <div class="description" fxLayoutGap="10px"  >
+                <div class="description"   >
                     <mat-card-title style="font-size:16px;font-family:Roboto,Arial,sans-serif;">{{note.description}}</mat-card-title>
                 </div>
-                <div class="remainder" style="margin-bottom: 8px;" fxLayout="row wrap"  >
+                <div class="remainder"  fxLayout="row wrap"  >
                     <mat-chip-list  >
                         <mat-chip *ngFor="let remainder of note.reminder" [removable]="removable" (removed)="deleteRemainder(note.id,note.reminder)" >
                             {{remainder | date:'MMM d, y, h:mm a'}}
@@ -58,7 +58,7 @@
                     </mat-chip-list>
                 </div>
                
-               <div fxLayout="row wrap"  >
+               <div class="label" fxLayout="row wrap"  >
                     <mat-chip-list >
                         <mat-chip *ngFor="let labels of note.noteLabels"  [removable]="removable" (removed)="deleteNoteLabel(note.id,labels.id)">
                             {{labels.label}}
@@ -66,6 +66,14 @@
                         </mat-chip>
                              
                     </mat-chip-list>
+                </div>
+                <div class="collaborator" fxLayout="row wrap" fxLayoutGap="5px"    >
+                    
+                        <button  mat-mini-fab *ngFor="let coll of note.collaborators" >
+                            {{coll.firstName[0].toUpperCase()}}
+                            
+                        </button>
+                             
                 </div>
                 <div class="icon"  >
                         <app-icon [childMessage]='note' [receivedLabels]='getLabels' (reloadEvent)="reloadAction($event)" ></app-icon>

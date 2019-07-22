@@ -16,30 +16,29 @@
           </div>
           
     </div>
-    <div fxLayout="row" fxLayoutGap="10px" *ngFor='let coll of add_col' >
-        <div class="profile-image" style="border-radius: 100%;">
-            <img mat-card-avatar style="height: 50px;width: 50px;" src="https://ya-webdesign.com/images/no-avatar-png-1.png" >
-        </div>
+    <div class="colla-list" fxLayout="row"  fxLayoutGap="10px" *ngFor='let coll of add_collaborators' >
         <div>
-            <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;font-weight: bold;">{{coll.firstName}}
+              <button class="round-image" >{{coll.firstName[0].toUpperCase()}}{{coll.lastName[0].toUpperCase()}}</button>
+
+        </div>
+       
+        <div>
+              <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;font-weight: bold;">{{coll.firstName | titlecase}}{{coll.lastName | titlecase}}
               </mat-card-title>
               <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;">{{coll.email}}
               </mat-card-title>
+        </div>
+        <div>
+          <button mat-icon-button (click)="deleteCollaborator(coll)" >
+            <mat-icon class="mat-icon" >close</mat-icon>
+          </button>
         </div>
        
     </div>
       <div fxLayout="row" fxLayoutGap="10px"  >
         
         <img mat-card-avatar style="height: 50px;width: 50px;" src="../../../assets/images/add_person.png" >
-        <!-- <div *ngFor='let value of  add_col' >
-
-          <p>{{value}}</p>
-        </div> -->
-        <!-- <input type="text" class="emailList" [matMenuTriggerFor]="belowMenu"   [(ngModel)]='select'  placeholder="Person or email to share with" (keyup)='searchUserList($event)' >
-          
-              <mat-menu #belowMenu="matMenu" yPosition="below"  >
-                  <button mat-menu-item *ngFor='let user of user_list' [value]='user.email' (click)="addCollaborator(user)" >{{user.email}}</button>
-              </mat-menu> -->
+      
               <form>
                 <mat-form-field>
                   <input type="text" class="emailList" matInput placeholder="Person or email to share with" [matAutocomplete]='auto' (keyup)='searchUserList($event)' />

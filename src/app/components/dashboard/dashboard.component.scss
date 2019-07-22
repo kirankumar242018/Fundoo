@@ -107,6 +107,36 @@
     background-color:#feefc3;
     border-bottom-right-radius: 32px;
     border-top-right-radius: 32px;
+    
+}
+// .sidenav-list ::ng-deep .mat-button-focus-overlay {
+//   background-color:#feefc3;
+// }
+
+
+// .mat-button-focus-overlay { 
+//   background-color: transparent!important; 
+//   }
+
+
+// .mat-button,
+// .mat-icon-button {
+//   &.cdk-focused,
+//   &.cdk-program-focused {
+//     background-color: none !important;
+
+//     .mat-button-focus-overlay {
+//       display: none !important;
+//     }
+//   }
+// }
+
+::ng-deep .mat-button-focus-overlay 
+{ 
+  background-color: transparent!important; 
+}
+::ng-deep .mat-menu-item:hover {
+  background-color:transparent;
 }
 .example-container {
     display: flex;

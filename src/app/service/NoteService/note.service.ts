@@ -63,4 +63,8 @@ export class NoteService {
   addCollaborator(url,body){
     return this.httpService.post(url,body,true);
   }
+  deleteNoteCollaborator(url,body){
+    return this.httpService.delete(url,true);
+  }
+
 }
