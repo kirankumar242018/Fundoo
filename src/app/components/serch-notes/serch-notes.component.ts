@@ -41,7 +41,7 @@ export class SerchNotesComponent implements OnInit {
 
   findCard = function(notes,searchnotes){
      this.resultcard = notes.filter(data=>{
-     console.log('data',data.title, ' search notes ',searchnotes);
+     console.log('search data',data.title, ' search notes ',searchnotes,'search Label',data.label);
        
       return data.title.toLowerCase().startsWith(searchnotes.toLowerCase()) || data.description.toLowerCase().startsWith(searchnotes.toLowerCase());
     })

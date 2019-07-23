@@ -1,6 +1,6 @@
 import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { NoteService } from 'src/app/service/NoteService/note.service';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, SelectControlValueAccessor } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 
@@ -12,14 +12,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./take-note.component.scss']
 })
 export class TakeNoteComponent implements OnInit {
+  
 
   constructor(private noteService:NoteService, public router:Router,private snackBar:MatSnackBar) { }
 title=new FormControl('',[Validators.required])
 description=new FormControl('',[Validators.required])
-
+setcolor;
   ngOnInit() {
   }
   @Output() refreshEvent = new EventEmitter<any>();
+
+  setColor(event){
+    this.setcolor = event
+  }
+
+
 
   addNote(){
     var form_contents = {
@@ -37,11 +44,13 @@ description=new FormControl('',[Validators.required])
       this.noteService.addNote('notes/addNotes',form_contents).subscribe(data =>{
         console.log(data,"note data")
         this.refreshEvent.emit()
-        
-
+        this.title.reset()
+        this.description.reset()
         this.snackBar.open("Note Created Successfully..","close", {
           duration: 3000,
+        
         });
+        
         
       },
       err =>{

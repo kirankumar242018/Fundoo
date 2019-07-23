@@ -35,6 +35,7 @@ export class IconComponent implements OnInit {
   @Input() childMessage;
   @Input() receivedLabels;
   @Output() reloadEvent =  new EventEmitter<any>();
+  @Output() colorChange = new EventEmitter<any>();
   userid=localStorage.getItem('userId')
 
   // today= new Date();
@@ -90,20 +91,28 @@ export class IconComponent implements OnInit {
   }
   changeColor(color){
     console.log("note details",color)
-    this.childMessage.color = color
+
     console.log("note color",color)
     
+
+    if (this.childMessage == undefined){
+      this.colorChange.emit(color)
+    }
+    else{
+    this.childMessage.color = color
     var contents = {
       noteIdList:[this.childMessage['id']],
       color:color
     }
-    this.noteService.noteColorChange('notes/changesColorNotes',contents).subscribe(data=>{
-      console.log(data);
-      // this.snackBar.open('Note color changed suceesfully...',"close",{duration:2000,});
-    },
-    err=>{
-      console.log(err)
-    })
+      this.noteService.noteColorChange('notes/changesColorNotes',contents).subscribe(data=>{
+        console.log(data);
+        // this.snackBar.open('Note color changed suceesfully...',"close",{duration:2000,});
+      },
+      err=>{
+        console.log(err)
+      })
+    }
+    
 
   }
   getNoteLabels(){
