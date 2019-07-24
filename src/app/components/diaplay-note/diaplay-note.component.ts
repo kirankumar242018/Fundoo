@@ -13,6 +13,8 @@ import { LabelService } from '../../service/LabelService/label.service';
 })
 export class DiaplayNoteComponent implements OnInit {
   @Input() allCards;
+  @Input() pinnedNotes;
+  @Input() unpinnedNotes;
   @Output() addlabelEvent = new EventEmitter<any>();
   @Output() deletelabelEvent = new EventEmitter<any>();
   title:string
@@ -21,6 +23,7 @@ export class DiaplayNoteComponent implements OnInit {
   allLabels=[]
   getLabels=[]
   removable = true;
+  notes=[]
   userid = localStorage.getItem('userId');
   //date = new Date();
   constructor(public dialog: MatDialog,public noteService:NoteService,private dataService: DataServiceService,
@@ -47,6 +50,7 @@ modifyNote(note): void {
   
 }
 get_notes=[]
+
 pinedNotes=[]
 isPined(note)
 {
@@ -54,17 +58,10 @@ isPined(note)
           noteIdList : [note['id']],
           isPined:true
       }
-      // this.noteService.getNote().subscribe(data=>{
-      //   this.get_notes = data['data']['data'];
-      // })
+      
       this.noteService.ispined('notes/pinUnpinNotes',contents).subscribe(data=>{
         console.log('pinned notes....',data)
-        // for (let i = 0; i < this.get_notes.length; i++) {
-        //   if (this.get_notes[i]['isPined'] == true) {
-        //     this.pinedNotes.push(this.allCards[i]);
-
-        //   }
-        // }
+        
         console.log("pinned notes..",this.pinedNotes)
       
 
@@ -76,8 +73,11 @@ isPined(note)
         console.log(err)
       })
     }
-  
-    getNoteLabels(){
+ 
+
+
+
+  getNoteLabels(){
       this.labelService.getLabel().subscribe(data=>{
         console.log("labels data...",data)
         this.allLabels = data['data']['details'];
@@ -120,4 +120,5 @@ isPined(note)
       })
     }
 
+   
 }

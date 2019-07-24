@@ -14,6 +14,8 @@ export class NoteComponent implements OnInit {
   get_notes = [];
   displayNote = [];
   refresh:any;
+  pinedNotes=[]
+  unpinnedNotes=[]
   ngOnInit() {
     this.getAllCard();
     this.dataService.currentMessage.subscribe(data => {
@@ -63,7 +65,17 @@ export class NoteComponent implements OnInit {
       for (let i = 0; i < this.notes.length; i++) {
         if ((this.get_notes[i]['isDeleted'] == false) && (this.get_notes[i]['isArchived'] == false)) {
             this.displayNote.push(this.get_notes[i]);
-
+            
+        }
+        if(this.get_notes[i]['isDeleted']==false || this.get_notes[i]['isArchive']==false){
+          if (this.get_notes[i]['isPined'] == true) {
+            this.pinedNotes.push(this.get_notes[i]);
+            console.log("pinned notes are...!",this.pinedNotes)
+          }
+          else{
+            this.unpinnedNotes.push(this.get_notes[i])
+            console.log("unpinned notes are...!",this.unpinnedNotes)
+          }
         }
       }
       

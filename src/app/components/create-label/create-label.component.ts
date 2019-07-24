@@ -27,6 +27,8 @@ export class CreateLabelComponent implements OnInit {
   labelId:any;
   
 
+  
+
   ngOnInit() {
     this.dataService.currentMessage.subscribe(data=>{
       // console.log("checking data",data) 

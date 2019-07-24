@@ -10,6 +10,8 @@ export class ArchiveNoteComponent implements OnInit {
   notes=[]
   get_notes=[]
   archiveNotes=[]
+  pinnedNotes=[]
+  unPinnedNotes=[]
   constructor(private noteService:NoteService) { }
 
   ngOnInit() {
@@ -25,6 +27,16 @@ export class ArchiveNoteComponent implements OnInit {
         if (this.get_notes[i]['isArchived'] == true) {
           this.archiveNotes.push(this.notes[i]);
 
+        }
+        if(this.get_notes[i]['isDeleted']==false || this.get_notes[i]['isArchive']==false){
+          if (this.get_notes[i]['isPined'] == true) {
+            this.pinnedNotes.push(this.get_notes[i]);
+            console.log("pinned notes are...!",this.pinnedNotes)
+          }
+          else{
+            this.unPinnedNotes.push(this.get_notes[i])
+            console.log("unpinned notes are...!",this.unPinnedNotes)
+          }
         }
       }
      

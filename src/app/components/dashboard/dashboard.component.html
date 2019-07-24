@@ -1,23 +1,23 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" fxFlex=100>
   <mat-toolbar color="white" class="example-toolbar">
     <div fxFlex=100>
-      <div fxFlex=4 fxFlex.sm=8 fxFlex.md=4 fxFlex.xs=10>
+      <div fxFlex=4 fxFlex.sm=6 fxFlex.md=6 fxFlex.xs=10>
         <button mat-icon-button (click)="snav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
       </div>
-      <div class="fun-img"  fxFlex=4 fxFlex.sm=12 >
+      <div class="fun-img"  fxFlex=4 fxFlex.sm=12 fxFlex.md=6 >
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThV5UgjlK3e2c1r90EndkY5_LGulOXrRKSPodL-mzrRe71MIHP"
           height="40" width="40">
       </div>
 
-      <div class="header"  fxFlex=14 fxFlex.md=5 fxFlex.sm=15 fxFlex.xs=5>
+      <div class="header"  fxFlex=14 fxFlex.md=15 fxFlex.sm=15 fxFlex.xs=5>
         <h1 class="example-app-name">{{HeaderName}}</h1>
       </div>
 
-      <div class="search" fxLayoutAlign="center center" fxFlexOffset='5' fxFlexOffset.lg='5' fxFlex=50 fxFlex.sm=45
-        fxFlex.md=100 fxFlex.xs=75 >
+      <div class="search" fxLayoutAlign="center center" fxFlexOffset='5' fxFlexOffset.lg='5' fxFlex=50 fxFlex.sm=35
+        fxFlex.md=50 fxFlex.xs=75 >
         <mat-form-field appearance="outline" [style.fontSize.px]=10 fxFlex="100">
           <mat-icon matPrefix>search</mat-icon>
           <input matInput type="search" fxFlexOffset="2" placeholder="Search" [style.fontSize.px]=15
@@ -30,14 +30,14 @@
                 
             </div> -->
 
-      <div class="grid-list" fxFlex=18 fxFlex.md=8 fxFlex.sm=10 fxFlex.xs=4>
+      <div class="grid-list" fxFlex=18 fxFlex.md=5 fxFlex.sm=20 fxFlex.xs=4>
         
         <button mat-icon-button (click)="grid-list()">
           <mat-icon>view_agenda</mat-icon>
         </button>
       </div>
 
-      <div fxFlex=10 fxFlex.md=18 fxFlex.sm=10 fxFlex.xs=15 fxLayoutAlign="end center">
+      <div fxFlex=10 fxFlex.md=18 fxFlex.sm=12 fxFlex.xs=15 fxLayoutAlign="end center">
         <img mat-card-avatar [matMenuTriggerFor]="menu" [src]="imageurl">
 
 

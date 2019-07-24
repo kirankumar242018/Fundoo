@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
   }
   changeProfile(): void {
     const dialogRef = this.dialog.open(ProfilePicComponent, {
-      width: '50%',
+      width: '40%',
       data: ''
     });
 
