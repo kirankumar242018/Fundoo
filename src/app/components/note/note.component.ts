@@ -21,15 +21,10 @@ export class NoteComponent implements OnInit {
     this.dataService.currentMessage.subscribe(data => {
       console.log('data service run');
       
-      if (data.type == 'update') {
+      if (data.type == 'update' || data.type == 'archive' || data.type=='trash' || data.type == 'pin' || data.type =='unpin') {
         this.getAllCard();
       }
-      else if(data.type == 'archive'){
-        this.getAllCard();
-      }
-      else if(data.type == 'trash'){
-        this.getAllCard();
-      }
+     
       else if(data.type=='setRemainder' || data.type == 'setRemainderToday' || data.type == 'setRemainderTommorow' 
               || data.type == 'setRemainderNextWeek' || data.type == 'removeRemainder'  ){
         this.getAllCard();
@@ -37,9 +32,7 @@ export class NoteComponent implements OnInit {
       else if(data.type=='addCollaborator' || data.type == 'deleteCollaborator' ){
         this.getAllCard();
       }
-      // else if(data.type == 'deleteCollaborator'){
-      //   this.getAllCard();
-      // }
+ 
       
     },
     
@@ -59,7 +52,8 @@ export class NoteComponent implements OnInit {
     this.noteService.getNote().subscribe(data => {
       this.notes = data['data']['data'];
       this.get_notes = this.notes.reverse();
-      this.displayNote=[]
+      // Note:=> "please initialize array every time otherwise array will over-written so reinitialize the array as shown below:"
+      this.displayNote=[]; this.pinedNotes=[];this.unpinnedNotes=[] 
       console.log('get_Notes..',this.get_notes)
      
       for (let i = 0; i < this.notes.length; i++) {

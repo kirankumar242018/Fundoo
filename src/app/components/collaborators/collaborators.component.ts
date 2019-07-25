@@ -142,5 +142,9 @@ export class CollaboratorsComponent implements OnInit {
     this.dialogRef.close();
 
   }
+  save(){
+    this.dialogRef.close();
+
+  }
 
 }

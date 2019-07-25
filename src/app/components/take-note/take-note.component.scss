@@ -41,3 +41,9 @@
     margin-bottom: 10px;
 
 }
+@media (min-width:350px) and (max-width:600px){
+    .main{
+        max-width:100%;
+        margin-left:0px;
+    }
+}

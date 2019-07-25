@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { DataServiceService } from '../../service/DataService/data-service.service';
 import { NoteService } from '../../service/NoteService/note.service';
 
@@ -8,14 +8,19 @@ import { NoteService } from '../../service/NoteService/note.service';
   styleUrls: ['./serch-notes.component.scss']
 })
 export class SerchNotesComponent implements OnInit {
-
+  @Input() pinnedNotes;
+  @Input() unpinnedNotes;
   constructor(private dataService:DataServiceService,private noteService:NoteService) { }
   all_notes=[];
   card=[];
   value;
   resultcard;
+  pinedNotes=[]
+  unPinnedNotes=[]
+  search_card=[]
   ngOnInit() {
     this.getNotes();
+
     this.dataService.currentMessage.subscribe(data=>{
       if(data.type == 'search'){
           console.log('searching data from dataService..',data)
@@ -25,13 +30,17 @@ export class SerchNotesComponent implements OnInit {
           console.log("searching card...",this.card)
        }
      })
+
   }
 
   getNotes(){
+    
+  
     this.noteService.getNote().subscribe(data=>{
       console.log("find data...",data)
       this.all_notes = data['data']['data']
       console.log('getting all_notes...',this.all_notes)
+      console.log("all the best...",this.card)
     },
     err => {
       console.log(err);

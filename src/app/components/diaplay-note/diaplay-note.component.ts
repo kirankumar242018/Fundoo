@@ -24,8 +24,16 @@ export class DiaplayNoteComponent implements OnInit {
   getLabels=[]
   removable = true;
   notes=[]
+  
   userid = localStorage.getItem('userId');
   //date = new Date();
+  // class={
+    
+  //   girdView=true,
+  //   listView=false
+
+  // }
+ 
   constructor(public dialog: MatDialog,public noteService:NoteService,private dataService: DataServiceService,
     public snackBar:MatSnackBar,private labelService:LabelService ) { }
 
@@ -63,17 +71,43 @@ isPined(note)
         console.log('pinned notes....',data)
         
         console.log("pinned notes..",this.pinedNotes)
-      
+        this.dataService.changeMessage({
+          data:{},
+          type:'pin'
+        })
 
-        this.snackBar.open("Note pinned Successfully..", "close", {
+        this.snackBar.open("Note Pinned  Successfully..", "close", {
           duration: 3000,
         });
       },
       err => {
         console.log(err)
       })
-    }
- 
+}
+isUnPined(note)
+{
+        var contents={
+          noteIdList : [note['id']],
+          isPined:false
+      }
+      
+      this.noteService.ispined('notes/pinUnpinNotes',contents).subscribe(data=>{
+        console.log('pinned notes....',data)
+        
+        console.log("pinned notes..",this.pinedNotes)
+        this.dataService.changeMessage({
+          data:{},
+          type:'unpin'
+        })
+
+        this.snackBar.open("Note Updated Successfully..", "close", {
+          duration: 3000,
+        });
+      },
+      err => {
+        console.log(err)
+      })
+}
 
 
 

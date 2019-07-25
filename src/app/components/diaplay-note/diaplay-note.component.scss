@@ -43,6 +43,29 @@
     margin-right: 5px;
     margin-bottom: 8px;
 }
+
+
+.grid{
+    width: 275px;
+    //height: 125px;
+    margin-left: 30px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    min-width: 280px;
+    border-radius: 15px;
+    
+}
+.list{
+
+}
+
+
+
+
+
+
+
+
 div .icon{
     visibility: hidden;
 }
@@ -72,6 +95,10 @@ div:hover .icon{
         width:94%;
         margin-left: 0px;
         
+    }
+    .main{
+        width:100%;
+        margin-left:0px;
     }
 }
 
