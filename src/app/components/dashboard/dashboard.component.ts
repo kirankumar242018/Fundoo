@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   imageurl;
   localstorage_image;
   values='';
+  isView:Boolean=true;
   private _mobileQueryListener: () => void;
 
 
@@ -109,6 +110,13 @@ export class DashboardComponent implements OnInit {
   getingNote(){
     this.router.navigate(['dashboard/search'])
 
+  }
+  grid_list(){
+    this.isView != true
+    this.dataService.changeMessage({
+      data:this.isView,
+      type:'grid-list'
+    })
   }
   getNoteLabels(){
     this.labelService.getLabel().subscribe(data=>{

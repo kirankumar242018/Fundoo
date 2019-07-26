@@ -17,6 +17,7 @@ export class ArchiveNoteComponent implements OnInit {
   ngOnInit() {
     this.getAllCard()
   }
+  
 
   getAllCard() {
     this.noteService.getNote().subscribe(data => {
@@ -40,4 +41,5 @@ export class ArchiveNoteComponent implements OnInit {
 
     });
   }
+  
 }

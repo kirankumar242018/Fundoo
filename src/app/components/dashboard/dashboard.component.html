@@ -32,9 +32,13 @@
 
       <div class="grid-list" fxFlex=18 fxFlex.md=5 fxFlex.sm=20 fxFlex.xs=4>
         
-        <button mat-icon-button (click)="grid-list()">
+        <button mat-icon-button fxHide="true" *ngIf='isView==false' (click)="grid_list()">
           <mat-icon>view_agenda</mat-icon>
         </button>
+        <button mat-icon-button fxHide="false"  *ngIf='isView==true' (click)="grid_list()">
+          <mat-icon >grid_on</mat-icon>
+        </button>
+        
       </div>
 
       <div fxFlex=10 fxFlex.md=18 fxFlex.sm=12 fxFlex.xs=15 fxLayoutAlign="end center">

@@ -21,7 +21,8 @@ export class NoteComponent implements OnInit {
     this.dataService.currentMessage.subscribe(data => {
       console.log('data service run');
       
-      if (data.type == 'update' || data.type == 'archive' || data.type=='trash' || data.type == 'pin' || data.type =='unpin') {
+      if (data.type == 'update' || data.type == 'archive' || data.type=='trash' || data.type == 'pin' || 
+      data.type =='unpin' || data.type =='unArchive' ) {
         this.getAllCard();
       }
      
@@ -29,7 +30,7 @@ export class NoteComponent implements OnInit {
               || data.type == 'setRemainderNextWeek' || data.type == 'removeRemainder'  ){
         this.getAllCard();
       }
-      else if(data.type=='addCollaborator' || data.type == 'deleteCollaborator' ){
+      else if(data.type=='addCollaborator' || data.type == 'deleteCollaborator' || data.type == 'grid-list' ){
         this.getAllCard();
       }
  
@@ -72,6 +73,7 @@ export class NoteComponent implements OnInit {
           }
         }
       }
+      console.log("needed informations...!",this.displayNote)
       
 
       console.log("isdeleted notes",this.displayNote)

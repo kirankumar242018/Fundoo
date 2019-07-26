@@ -65,13 +65,12 @@
 
 
 
-<div class="notes" fxFlex=100 style="justify-content: center;" fxLayout="row wrap"  fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap">
-    <div *ngIf="pinnedNotes.length > 0" style="justify-content: center;" fxLayout="row wrap"  fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap"  >
-        <div>
-            Pinned
+<div class="notes" fxFlex=100 style="justify-content: center;" fxLayout="row wrap"  fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap"  >
+    <div *ngIf="pinnedNotes.length > 0" [ngClass]="value=='row' ? 'gridView':'listView'"     >
+        <div class="pin_other" >
+          PINNED
         </div>        
-        <div *ngFor="let note of pinnedNotes" class="container" fxLayoutGap="2px"
-        [ngClass]="choice ? 'gridView':'listView'">
+        <div *ngFor="let note of pinnedNotes" class="container" fxLayoutGap="2px">
                 
                
                    
@@ -122,7 +121,7 @@
                                         
                             </div>
                             <div class="icon"  >
-                                    <app-icon [childMessage]='note' [receivedLabels]='getLabels' (reloadEvent)="reloadAction($event)" ></app-icon>
+                                    <app-icon  [childMessage]='note' [receivedLabels]='getLabels' (reloadEvent)="reloadAction($event)" ></app-icon>
                             </div>
 
                         </mat-card>
@@ -134,9 +133,9 @@
                 </div>
     </div>
     
-    <div *ngIf="unpinnedNotes.length > 0" style="justify-content: center;" fxLayout="row wrap"  fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap"  >
-        <div >
-            Others
+    <div *ngIf="unpinnedNotes.length > 0"  [ngClass]="value=='row' ? 'gridView':'listView'"  >
+        <div class="pin_other">
+            OTHERS
         </div>
         
             <div *ngFor="let note of unpinnedNotes" class="container" fxLayoutGap="2px">

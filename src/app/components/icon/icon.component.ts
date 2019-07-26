@@ -89,6 +89,25 @@ export class IconComponent implements OnInit {
     })
 
   }
+  // unArchiveNote(){
+  //   var contents = {
+  //     noteIdList:[this.childMessage['id']],
+  //     isArchived:false
+  //   }
+  //   this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
+  //     console.log(data);
+  //     this.dataService.changeMessage({
+  //       data:{},
+  //       type:'unArchive'
+  //     })
+
+  //     this.snackBar.open("Note Updated successfully...","close",{duration:3000,});
+  //   },
+  //   err=>{
+  //     console.log(err)
+  //   })
+
+  // }
   changeColor(color){
     console.log("note details",color)
 

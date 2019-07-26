@@ -17,6 +17,8 @@ export class DiaplayNoteComponent implements OnInit {
   @Input() unpinnedNotes;
   @Output() addlabelEvent = new EventEmitter<any>();
   @Output() deletelabelEvent = new EventEmitter<any>();
+  value:string='row'
+  
   title:string
   description:string
   card:any
@@ -39,11 +41,7 @@ export class DiaplayNoteComponent implements OnInit {
 
 ngOnInit() {
   this.getNoteLabels()
-  this.dataService.currentMessage.subscribe(message =>{
-    console.log('data in display',message);
-    
-  })
-
+  
 }
 reloadAction(event){
   console.log("reloadEvent emitter..");
@@ -58,7 +56,7 @@ modifyNote(note): void {
   
 }
 get_notes=[]
-
+displayNote=[]
 pinedNotes=[]
 isPined(note)
 {
@@ -108,6 +106,7 @@ isUnPined(note)
         console.log(err)
       })
 }
+
 
 
 

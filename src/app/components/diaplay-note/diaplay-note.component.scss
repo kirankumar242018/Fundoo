@@ -1,16 +1,11 @@
 .cards{
-
     width: 275px;
     //height: 125px;
-    margin-left: 30px;
+    margin-left: 10px;
     margin-bottom: 12px;
     margin-top: 12px;
     min-width: 280px;
     border-radius: 15px;
-    
-
-
-    
     
 }
 
@@ -34,6 +29,7 @@
 .collaborator{
     margin-right: 5px;
     margin-bottom: 8px;
+  
 }
 .remainder{
     margin-right: 5px;
@@ -45,18 +41,45 @@
 }
 
 
-.grid{
-    width: 275px;
-    //height: 125px;
-    margin-left: 30px;
-    margin-bottom: 12px;
-    margin-top: 12px;
-    min-width: 280px;
-    border-radius: 15px;
+.gridView{
+    justify-content: center;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 100%;
+    max-width: 100%;
+    .cards{
+        width: 275px;
+        //height: 125px;
+        margin-left: 10px;
+        margin-bottom: 12px;
+        margin-top: 12px;
+        min-width: 280px;
+        border-radius: 15px;
+        
+    }
     
 }
-.list{
+.listView{
+   
+    width:100%;
+    .cards{
 
+        width: 600px;
+        //height: 125px;
+        //margin-left: 10px;
+        margin-bottom: 12px;
+        margin-top: 12px;
+        min-width: 280px;
+        border-radius: 15px;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+    }
+    .pin_other{
+        margin-left:185px;
+    }
 }
 
 
