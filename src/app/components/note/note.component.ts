@@ -30,7 +30,7 @@ export class NoteComponent implements OnInit {
               || data.type == 'setRemainderNextWeek' || data.type == 'removeRemainder'  ){
         this.getAllCard();
       }
-      else if(data.type=='addCollaborator' || data.type == 'deleteCollaborator' || data.type == 'grid-list' ){
+      else if(data.type=='addCollaborator' || data.type == 'deleteCollaborator'  ){
         this.getAllCard();
       }
  

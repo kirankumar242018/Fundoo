@@ -17,7 +17,7 @@ export class DiaplayNoteComponent implements OnInit {
   @Input() unpinnedNotes;
   @Output() addlabelEvent = new EventEmitter<any>();
   @Output() deletelabelEvent = new EventEmitter<any>();
-  value:string='row'
+  value;
   
   title:string
   description:string
@@ -28,20 +28,26 @@ export class DiaplayNoteComponent implements OnInit {
   notes=[]
   
   userid = localStorage.getItem('userId');
-  //date = new Date();
-  // class={
-    
-  //   girdView=true,
-  //   listView=false
-
-  // }
+ 
  
   constructor(public dialog: MatDialog,public noteService:NoteService,private dataService: DataServiceService,
     public snackBar:MatSnackBar,private labelService:LabelService ) { }
 
 ngOnInit() {
   this.getNoteLabels()
-  
+  this.dataService.currentMessage.subscribe(data=>{
+    if(data.type=='grid-list'){
+     console.log("grid_list value..!",data)
+      if(data.data){
+        console.log('data is false',);
+        
+        this.value='column'
+      }
+      else{
+        this.value='row'
+      }
+    }
+  })
 }
 reloadAction(event){
   console.log("reloadEvent emitter..");

@@ -64,6 +64,7 @@ export class CreateLabelComponent implements OnInit {
         data:{},
         type:'editlabel'
       })
+      this.labelname.reset()
       this.snackBar.open("Label Created Successfully..","close", {
         duration: 3000,
       });

@@ -112,7 +112,9 @@ export class DashboardComponent implements OnInit {
 
   }
   grid_list(){
-    this.isView != true
+    this.isView = !this.isView;
+    console.log('view is ',this.isView);
+    
     this.dataService.changeMessage({
       data:this.isView,
       type:'grid-list'
