@@ -31,6 +31,7 @@ export class IconComponent implements OnInit {
     console.log('Child meassage..!',this.childMessage)
   }
   search:string;
+  
   datetimepick:[];
   @Input() childMessage;
   @Input() receivedLabels;
@@ -41,7 +42,7 @@ export class IconComponent implements OnInit {
   // today= new Date();
   // jstoday = '';
  
-
+  //isarchive=this.childMessage.isArchived;
   
   collaborator(childMessage): void{
     const dialogRef = this.dialog.open(CollaboratorsComponent,{
@@ -75,6 +76,7 @@ export class IconComponent implements OnInit {
       noteIdList:[this.childMessage['id']],
       isArchived:true
     }
+    
     this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
       console.log(data);
       this.dataService.changeMessage({
@@ -112,6 +114,7 @@ export class IconComponent implements OnInit {
     console.log("note details",color)
 
     console.log("note color",color)
+    console.log('Child message..!',this.childMessage.isArchived)
     
 
     if (this.childMessage == undefined){

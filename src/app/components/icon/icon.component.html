@@ -86,8 +86,11 @@
 
   </div>
   <div fxFlex=16>
-    <button mat-icon-button (click)='archiveNote()' (click)='unArchiveNote()' >
+    <button mat-icon-button  *ngIf='isarchive'  (click)='archiveNote()'  >
       <mat-icon>archive</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf='!isarchive' (click)='unArchiveNote()' >
+      <mat-icon>unarchive</mat-icon>
     </button>
 
   </div>
