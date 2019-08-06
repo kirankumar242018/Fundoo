@@ -9,9 +9,9 @@ import { DataServiceService } from '../../service/DataService/data-service.servi
   styleUrls: ['./collaborators.component.scss']
 })
 export class CollaboratorsComponent implements OnInit {
-  email='';
-  firstname='';
-  lastname='';
+  email = '';
+  firstname = '';
+  lastname = '';
   username='';
   imageurl;
   localstorage_image;

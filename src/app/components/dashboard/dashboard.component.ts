@@ -122,10 +122,10 @@ export class DashboardComponent implements OnInit {
   }
   getNoteLabels(){
     this.labelService.getLabel().subscribe(data=>{
-      console.log("labels data...",data)
+      //console.log("labels data...",data)
       this.allLabels = data['data']['details'];
       this.getLabels = this.allLabels.reverse();
-      console.log("got labels..",this.getLabels)
+      //console.log("got labels..",this.getLabels)
 
     },
     err=>{

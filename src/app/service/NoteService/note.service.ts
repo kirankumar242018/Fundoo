@@ -66,5 +66,8 @@ export class NoteService {
   deleteNoteCollaborator(url,body){
     return this.httpService.delete(url,true);
   }
+  getRemainderNotes(){
+    return this.httpService.get('notes/getReminderNotesList',true);
+  }
 
 }

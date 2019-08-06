@@ -33,6 +33,10 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DatePipe } from '@angular/common';
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {ReminderNotesComponent} from './components/reminder-notes/reminder-notes.component';
+import {UpdateRemainderNotesComponent} from './components/update-remainder-notes/update-remainder-notes.component';
+
+
 
 @NgModule({
   declarations: [
@@ -54,7 +58,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CreateLabelComponent,
     SearchLabelPipe,
     CollaboratorsComponent,
-    
+    ReminderNotesComponent,
+    UpdateRemainderNotesComponent,
     
   ],
   imports: [
@@ -76,8 +81,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
   ],
-providers: [AuthGuard,AuthserviceService,DatePipe],
-  entryComponents : [UpdateNoteComponent,ProfilePicComponent,CreateLabelComponent,CollaboratorsComponent],
+providers: [AuthGuard, AuthserviceService, DatePipe],
+  entryComponents : [UpdateNoteComponent, ProfilePicComponent,
+                     CreateLabelComponent, CollaboratorsComponent,UpdateRemainderNotesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

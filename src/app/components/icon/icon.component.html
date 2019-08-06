@@ -4,13 +4,16 @@
             <!-- <button mat-icon-button>
               <mat-icon class="material-icons">notification_important</mat-icon>
             </button> -->
-            <button mat-button [matMenuTriggerFor]="remainderlist">
+            <button  mat-button [matMenuTriggerFor]="remainderlist">
               <mat-icon class="material-icons">notification_important</mat-icon>
             </button>
             <mat-menu #remainderlist="matMenu">
-              <button mat-menu-item (click)="setRemainderToday()" >Later today <span class="tab"  >8:00 PM</span> </button>
-              <button mat-menu-item (click)="setRemainderTommorow()" >Tommorow <span class="tab">8:00 AM</span></button>
-              <button mat-menu-item (click)="setRemainderNextWeek()" >Next Week <span class="tab">Mon,8:00 AM</span> </button>
+              <button mat-menu-item (click)="setRemainderSchedule('today')"  >Later Today 
+                <span class="tab"  >8:00 PM</span> </button>
+              <button mat-menu-item (click)="setRemainderSchedule('tommorow')" >Tommorow 
+                <span class="tab">8:00 AM</span></button>
+              <button mat-menu-item (click)="setRemainderSchedule('nextweek')" >Next Week 
+                <span class="tab">Mon,8:00 AM</span> </button>
 
               <button mat-menu-item [matMenuTriggerFor]="remaindersublist">
                 <img src="../../../assets/svg-icons/remainder.svg" height="14px" width="14px">
@@ -42,12 +45,15 @@
                                   <input matInput type="text"  placeholder="select schedule"  />
                                 </button>
                                 <mat-menu #remaindersublist2="matMenu">
-                                    <button mat-menu-item (click)='selectSchedule()'>Daily</button>
+                                    <!-- <button mat-menu-item (click)='selectSchedule()'>Daily</button>
                                     <button mat-menu-item (click)='selectSchedule()'>Weekly</button>
                                     <button mat-menu-item (click)='selectSchedule()'>Monthly</button>
-                                    <button mat-menu-item (click)='selectSchedule()'>Yearly</button>
+                                    <button mat-menu-item (click)='selectSchedule()'>Yearly</button> -->
+                                    <div fxLayout="column" (click)="$event.stopPropagation()" *ngFor='let repeat of schedule'  >
+                                        <button mat-menu-item (click)='selectSchedule()'>{{repeat}}</button>
+                                    </div>
           
-                                  </mat-menu>
+                                </mat-menu>
                           </div>
                           <div id="divider"></div>
 
@@ -86,10 +92,10 @@
 
   </div>
   <div fxFlex=16>
-    <button mat-icon-button  *ngIf='isarchive'  (click)='archiveNote()'  >
+    <button mat-icon-button  *ngIf='!isarchive'  (click)='archiveNote()'  >
       <mat-icon>archive</mat-icon>
     </button>
-    <button mat-icon-button *ngIf='!isarchive' (click)='unArchiveNote()' >
+    <button mat-icon-button *ngIf='isarchive' (click)='unArchiveNote()' >
       <mat-icon>unarchive</mat-icon>
     </button>
 
@@ -107,8 +113,12 @@
     </button>
 
     <mat-menu #mainlist="matMenu">
-      <button mat-menu-item (click)='trashNote()'>Delete Note</button>
-      <button mat-menu-item [matMenuTriggerFor]="sublist">Add Label</button>
+      <button *ngIf='!isDeleted' mat-menu-item (click)='trashNote()'>Delete Note</button>
+      <button *ngIf='!isDeleted' mat-menu-item [matMenuTriggerFor]="sublist">Add Label</button>
+      <button *ngIf='isDeleted' mat-menu-item (click)='deleteNoteForever()'>DeleteNoteForever</button>
+      <button *ngIf='isDeleted' mat-menu-item (click)='restoreNote()'>restore</button>
+      
+
     </mat-menu>
 
 

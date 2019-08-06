@@ -13,7 +13,7 @@ import { NoteComponent } from './components/note/note.component';
 import { TrashNoteComponent } from './components/trash-note/trash-note.component';
 import { ArchiveNoteComponent } from './components/archive-note/archive-note.component';
 import {SerchNotesComponent} from './components/serch-notes/serch-notes.component';
-
+import {ReminderNotesComponent} from './components/reminder-notes/reminder-notes.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
@@ -33,15 +33,19 @@ const routes: Routes = [
         component: NoteComponent
       },
       {
-        path:'trash',
-        component:TrashNoteComponent
+        path: 'trash',
+        component: TrashNoteComponent
       },
       {
-        path:'archive',
-        component:ArchiveNoteComponent
+        path: 'archive',
+        component: ArchiveNoteComponent
       },
       { path: 'search',
-        component:SerchNotesComponent 
+        component: SerchNotesComponent
+      },
+      {
+        path: 'remainder',
+        component: ReminderNotesComponent
       },
   
     ]

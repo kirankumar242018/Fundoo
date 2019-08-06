@@ -8,6 +8,11 @@
     border-radius: 15px;
     
 }
+// .pin_other{
+//     // margin-left:185px;
+//     position:relative;
+//     left:250px;
+// }
 
 .title{
     border:none transparent;
@@ -58,6 +63,11 @@
         border-radius: 15px;
         
     }
+    // .pin_other{
+        
+    //     position:relative;
+    //     left:250px;
+    // }
     
 }
 .listView{
@@ -78,7 +88,9 @@
         justify-content: center;
     }
     .pin_other{
-        margin-left:185px;
+        // margin-left:185px;
+        position:relative;
+        left:250px;
     }
 }
 

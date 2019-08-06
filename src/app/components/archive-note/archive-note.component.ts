@@ -25,7 +25,7 @@ export class ArchiveNoteComponent implements OnInit {
       this.get_notes = this.notes.reverse();
       console.log("archive data...!",data)
       for (let i = 0; i < this.notes.length; i++) {
-        if (this.get_notes[i]['isArchived'] == true) {
+        if ((this.get_notes[i]['isArchived'] == true)) {
           this.archiveNotes.push(this.notes[i]);
 
         }

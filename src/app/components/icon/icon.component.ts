@@ -7,6 +7,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {formatDate } from '@angular/common';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import{CollaboratorsComponent} from '../../components/collaborators/collaborators.component'
+import { scheduleMicroTask } from '@angular/core/src/util';
 
 @Component({
   selector: 'app-icon',
@@ -22,13 +23,20 @@ export class IconComponent implements OnInit {
 
     }
   color=[['#FFFFFF','#f28b82','#fbbc04','#fff475'],['#ccff90','#a7ffeb','#cbf0f8','#aecbfa'],['#d7aefb','#fdcfe8','#e6c9a8','#e8eaed']];
+  schedule=['Daily','Weekly','Monthly','Yearly']
   allLabels=[]
-  getLabels=[]
-  //searchLabel:string;
   
+   getLabels=[]
+  //searchLabel:string;
+  private isarchive
+  private isDeleted
   ngOnInit() {
     this.getNoteLabels()
     console.log('Child meassage..!',this.childMessage)
+    this.isarchive=this.childMessage.isArchived;
+    console.log('archive testing..!',this.isarchive)
+    this.isDeleted = this.childMessage.isDeleted
+    console.log('checking isDeleted..!',this.isDeleted)
   }
   search:string;
   
@@ -42,7 +50,7 @@ export class IconComponent implements OnInit {
   // today= new Date();
   // jstoday = '';
  
-  //isarchive=this.childMessage.isArchived;
+  
   
   collaborator(childMessage): void{
     const dialogRef = this.dialog.open(CollaboratorsComponent,{
@@ -71,10 +79,57 @@ export class IconComponent implements OnInit {
         console.log(err)
       })
   }
+
+  restoreNote(){
+    var contents = {
+      noteIdList: [this.childMessage['id']],
+      isDeleted: false
+    }
+    this.noteService.deleteNote('notes/trashNotes', contents).subscribe(data => {
+      console.log(data);
+      this.dataService.changeMessage({
+        data:{},
+        type:'restore'
+      })
+      
+      this.snackBar.open("Note restored Successfully..", "close", {
+        duration: 3000,
+      });
+    },
+      err => {
+        console.log(err)
+      })
+  }
+  deleteNoteForever(){
+    var contents = {
+      noteIdList: [this.childMessage['id']],
+      isDeleted: true
+    }
+    this.noteService.deleteNote('notes/deleteForeverNotes', contents).subscribe(data => {
+      console.log(data);
+      this.dataService.changeMessage({
+        data:{},
+        type:'deleteNote'
+      })
+      
+      this.snackBar.open("Note deleted Successfully..", "close", {
+        duration: 3000,
+      });
+    },
+      err => {
+        console.log(err)
+      })
+  }
+
   archiveNote(){
     var contents = {
+      // noteIdList:[this.childMessage['id']],
+      // isArchived:!this.childMessage['isArchived'],
+      // isDeleted:false,
+      // isPined:false
       noteIdList:[this.childMessage['id']],
       isArchived:true
+
     }
     
     this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
@@ -91,30 +146,35 @@ export class IconComponent implements OnInit {
     })
 
   }
-  // unArchiveNote(){
-  //   var contents = {
-  //     noteIdList:[this.childMessage['id']],
-  //     isArchived:false
-  //   }
-  //   this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
-  //     console.log(data);
-  //     this.dataService.changeMessage({
-  //       data:{},
-  //       type:'unArchive'
-  //     })
+  unArchiveNote(){
+    var contents = {
+      // noteIdList:[this.childMessage['id']],
+      // isArchived:false
+      noteIdList:[this.childMessage['id']],
+      //isArchived:!this.childMessage['isArchived'],
+      isArchived:false,
+      isDeleted:false,
+      isPined:false
+    }
+    this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
+      console.log(data);
+      this.dataService.changeMessage({
+        data:{},
+        type:'unArchive'
+      })
 
-  //     this.snackBar.open("Note Updated successfully...","close",{duration:3000,});
-  //   },
-  //   err=>{
-  //     console.log(err)
-  //   })
+      this.snackBar.open("Note Updated successfully...","close",{duration:3000,});
+    },
+    err=>{
+      console.log(err)
+    })
 
-  // }
+  }
   changeColor(color){
     console.log("note details",color)
 
     console.log("note color",color)
-    console.log('Child message..!',this.childMessage.isArchived)
+    //console.log('Child message..!',this.childMessage.isArchived)
     
 
     if (this.childMessage == undefined){
@@ -139,10 +199,10 @@ export class IconComponent implements OnInit {
   }
   getNoteLabels(){
     this.labelService.getLabel().subscribe(data=>{
-      console.log("labels data...",data)
+      //console.log("labels data...",data)
       this.allLabels = data['data']['details'];
       this.getLabels = this.allLabels.reverse();
-      console.log("get labels..",this.getLabels)
+      //console.log("get labels..",this.getLabels)
 
     },
     err=>{
@@ -166,7 +226,7 @@ export class IconComponent implements OnInit {
     
   }
   setRemainder(datetimepick){
-    
+    console.log("datepick property..!",datetimepick['date'])
     var contents={
       reminder:[datetimepick],
       noteIdList:[this.childMessage['id']],
@@ -184,30 +244,91 @@ export class IconComponent implements OnInit {
     })
 
   }
-  setRemainderToday(){
-    var todayDate = new Date();
-    todayDate.setHours(20,0,0)
-    var contents={
-      reminder:[todayDate],
-      noteIdList:[this.childMessage['id']],
-      userId:this.userid
-    }
-    this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
-      console.log("remainder dtae and time...!",data)
-      this.dataService.changeMessage({
-        data:{},
-        type:'setRemainderToday'
-      })
-      this.snackBar.open("today remainder added to Note successfully...","close",{duration:3000,});
+  // setRemainderToday(){
+  //   var todayDate = new Date();//gives current date
+  //   todayDate.setHours(20,0,0)
+  //   var contents={
+  //     reminder:[todayDate],
+  //     noteIdList:[this.childMessage['id']],
+  //     userId:this.userid
+  //   }
+  //   this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+  //     console.log("remainder date and time...!",data)
+  //     this.dataService.changeMessage({
+  //       data:{},
+  //       type:'setRemainderToday'
+  //     })
+  //     this.snackBar.open("today remainder added to Note successfully...","close",{duration:3000,});
 
-    })
+  //   })
 
     
-  }
-  setRemainderTommorow(){
+  // }
+  // setRemainderTommorow(){
+  //   var today = new Date();
+  //   var tommorow=new Date(today.setDate(today.getDate() + 1));//gives tommorows date 
+  //   tommorow.setHours(20,0,0)
+  //   var contents={
+  //     reminder:[tommorow],
+  //     noteIdList:[this.childMessage['id']],
+  //     userId:this.userid
+  //   }
+  //   this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+  //     console.log("remainder date and time...!",data)
+  //     this.dataService.changeMessage({
+  //       data:{},
+  //       type:'setRemainderTommorow'
+  //     })
+  //     this.snackBar.open("tommorow remainder added to Note successfully...","close",{duration:3000,});
+
+  //   })
+
+  // }
+
+  // setRemainderNextWeek(){
+  //   var today = new Date();
+  //   var nextWeek = new Date(today.setDate(today.getDate() + 7));//gives dates of next week  
+  //   nextWeek.setHours(20,0,0);
+  //   var contents={
+  //     reminder:[nextWeek],
+  //     noteIdList:[this.childMessage['id']],
+  //     userId:this.userid
+  //   }
+  //   this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+  //     console.log("remainder date and time...!",data)
+  //     this.dataService.changeMessage({
+  //       data:{},
+  //       type:'setRemainderNextWeek'
+  //     })
+  //     this.snackBar.open("NextWeek Remainder added to Note Succesfully....!","close",{duration:3000,});
+  //   })
+
+  // }
+  setRemainderSchedule(data){
     var today = new Date();
-    var tommorow=new Date(today.setDate(today.getDate() + 1));
-    tommorow.setHours(20,0,0)
+    if(data ==='today'){
+          console.log('working...')
+          var todayDate = today
+          todayDate.setHours(20,0,0)
+        var contents={
+          reminder:[todayDate],
+          noteIdList:[this.childMessage['id']],
+          userId:this.userid
+        }
+        this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+          console.log("remainder date and time...!",data)
+          this.dataService.changeMessage({
+            data:{},
+            type:'setRemainderToday'
+          })
+          this.snackBar.open("today remainder added to Note successfully...","close",{duration:3000,});
+
+        })
+    }
+    else if(data === 'tommorow'){
+      //console.log('working...')
+      var tommorow=new Date(today.setDate(today.getDate() + 1));//gives tommorows date 
+      tommorow.setHours(20,0,0)
     var contents={
       reminder:[tommorow],
       noteIdList:[this.childMessage['id']],
@@ -223,25 +344,27 @@ export class IconComponent implements OnInit {
 
     })
 
-  }
-
-  setRemainderNextWeek(){
-    var today = new Date();
-    var nextWeek = new Date(today.setDate(today.getDate() + 7));
-    nextWeek.setHours(20,0,0);
-    var contents={
-      reminder:[nextWeek],
-      noteIdList:[this.childMessage['id']],
-      userId:this.userid
     }
-    this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
-      console.log("remainder date and time...!",data)
-      this.dataService.changeMessage({
-        data:{},
-        type:'setRemainderNextWeek'
+    else if(data === 'nextweek'){
+      var nextweek = new Date(today.setDate(today.getDate()+7));
+      nextweek.setHours(20,0,0)
+      var contents={
+        reminder:[nextweek],
+        noteIdList:[this.childMessage['id']],
+        userId:this.userid
+      }
+      this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
+        console.log("remainder date and time...!",data)
+        this.dataService.changeMessage({
+          data:{},
+          type:'setRemainderNextWeek'
+        })
+        this.snackBar.open("nextWeek reaminder added to Note successfully..!","close",{duration:3000,});
       })
-      this.snackBar.open("NextWeek Remainder added to Note Succesfully....!","close",{duration:3000,});
-    })
+    }
+    
+
+
 
   }
 

@@ -52,7 +52,7 @@
               <img mat-card-avatar style="height: 70px;width: 70px;" [src]="imageurl" (click)="changeProfile()">
 
             </div>
-            <div>
+            <div class="datails" >
               <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;">{{username}}
               </mat-card-title>
               <mat-card-title style="font-size:14px;font-family: Roboto,Arial,sans-serif;">{{email}}
@@ -62,8 +62,8 @@
           </div>
           <div class="divider"></div>
           <div class="footer" fxLayout="row" fxLayoutAlign="space-between center" fxFlex=100>
-            <button mat-raised-button (click)="addAccount" id="add-btn" color="">Add account</button>
-            <button mat-raised-button (click)="logout()" id="logout-btn" color="">Sign out</button>
+            <button style="margin-left:15px;" mat-raised-button (click)="addAccount" id="add-btn" color="">Add account</button>
+            <button style="margin-right: 15px;" mat-raised-button (click)="logout()" id="logout-btn" color="">Sign out</button>
 
 
           </div>
@@ -92,7 +92,7 @@
 
           <div class="remainder" (click)="HeaderName='Remainder'"
             [ngClass]="{'sidenav':HeaderName != 'Remainder','sidenav-list':HeaderName == 'Remainder'}">
-            <button mat-button routerLink="." class="round" (click)='Remainder'>
+            <button mat-button routerLink="remainder" class="round" (click)='Remainder'>
               <mat-icon style="margin-right:24px;">notifications_none</mat-icon>Remainder
             </button>
           </div>

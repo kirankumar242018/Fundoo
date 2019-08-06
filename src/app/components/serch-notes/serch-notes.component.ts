@@ -23,11 +23,11 @@ export class SerchNotesComponent implements OnInit {
 
     this.dataService.currentMessage.subscribe(data=>{
       if(data.type == 'search'){
-          console.log('searching data from dataService..',data)
+          //console.log('searching data from dataService..',data)
           this.value = data.data; // sended data are like json format...
           //console.log("all_notes",this.all_notes)
           this.card = this.findCard(this.all_notes,this.value)
-          console.log("searching card...",this.card)
+          //console.log("searching card...",this.card)
        }
      })
 
@@ -37,9 +37,9 @@ export class SerchNotesComponent implements OnInit {
     
   
     this.noteService.getNote().subscribe(data=>{
-      console.log("find data...",data)
+      //console.log("find data...",data)
       this.all_notes = data['data']['data']
-      console.log('getting all_notes...',this.all_notes)
+      //console.log('getting all_notes...',this.all_notes)
       console.log("all the best...",this.card)
     },
     err => {

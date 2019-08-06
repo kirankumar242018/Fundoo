@@ -5,7 +5,7 @@ import { NoteService } from '../../service/NoteService/note.service';
 import {DataServiceService} from '../../service/DataService/data-service.service'
 import { MatSnackBar } from '@angular/material';
 import { LabelService } from '../../service/LabelService/label.service';
-
+import {UpdateRemainderNotesComponent} from '../../components/update-remainder-notes/update-remainder-notes.component'
 @Component({
   selector: 'app-diaplay-note',
   templateUrl: './diaplay-note.component.html',
@@ -60,6 +60,12 @@ modifyNote(note): void {
       data: note
     });
   
+}
+modifyRemainder(note):void{
+  const dialogRef = this.dialog.open(UpdateRemainderNotesComponent,{
+    width: '30%',
+    data: note
+  })
 }
 get_notes=[]
 displayNote=[]
