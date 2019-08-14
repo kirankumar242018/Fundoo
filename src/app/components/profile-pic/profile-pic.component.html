@@ -2,22 +2,21 @@
   <mat-card fxFlex=100   >
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <mat-card-title>
-        <h4>Select Profile Photo</h4>
+        <h4  style ="font-size:16px;">Select Profile Photo</h4>
       </mat-card-title>
       <button mat-icon-button (click)='close()'>
-        <img src="../../../assets/svg-icons/multiply.svg" height="20px" width="20px">
+        <img src="../../../assets/svg-icons/multiply.svg" height="18px" width="12px">
       </button>
     </div>
     <div class="divider"></div>
     <div class="button" fxLayout="row" fxLayoutAlign="center center">
-      <mat-card-content>
+      <div class="input" >
+        <mat-card-content>
        
-            <input  type="file"  (change)="getprofilephoto($event)" 
-            color=""  accept="image/*"/>
-            
-       
-          
-      </mat-card-content>
+          <input  type="file"  (change)="getprofilephoto($event)" color=""  accept="image/*"/>
+        </mat-card-content> 
+      </div>
+      
       <div>
           <image-cropper [imageChangedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)" style="width:250px;height:250px;float:left;" ></image-cropper>
       </div>

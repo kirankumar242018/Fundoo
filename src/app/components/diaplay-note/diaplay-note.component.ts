@@ -17,6 +17,8 @@ export class DiaplayNoteComponent implements OnInit {
   @Input() unpinnedNotes;
   @Output() addlabelEvent = new EventEmitter<any>();
   @Output() deletelabelEvent = new EventEmitter<any>();
+  @Output() unarchiveEvent = new EventEmitter<any>();
+
   value;
   
   title:string
@@ -24,7 +26,7 @@ export class DiaplayNoteComponent implements OnInit {
   card:any
   allLabels=[]
   getLabels=[]
-  removable = true;
+  public removable = true;
   notes=[]
   
   userid = localStorage.getItem('userId');
@@ -39,7 +41,7 @@ ngOnInit() {
     if(data.type=='grid-list'){
      console.log("grid_list value..!",data)
       if(data.data){
-        console.log('data is false',);
+        console.log('data is false');
         
         this.value='column'
       }
@@ -53,6 +55,7 @@ reloadAction(event){
   console.log("reloadEvent emitter..");
   this.getNoteLabels();
   this.addlabelEvent.emit();
+  this.unarchiveEvent.emit();
 }
 modifyNote(note): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
@@ -67,7 +70,7 @@ modifyRemainder(note):void{
     data: note
   })
 }
-get_notes=[]
+public get_notes=[]
 displayNote=[]
 pinedNotes=[]
 isPined(note)
@@ -78,14 +81,14 @@ isPined(note)
       }
       
       this.noteService.ispined('notes/pinUnpinNotes',contents).subscribe(data=>{
-        console.log('pinned notes....',data)
+        //console.log('pinned notes....',data)
         
         console.log("pinned notes..",this.pinedNotes)
         this.dataService.changeMessage({
           data:{},
           type:'pin'
         })
-
+        //debugger
         this.snackBar.open("Note Pinned  Successfully..", "close", {
           duration: 3000,
         });
@@ -102,7 +105,7 @@ isUnPined(note)
       }
       
       this.noteService.ispined('notes/pinUnpinNotes',contents).subscribe(data=>{
-        console.log('pinned notes....',data)
+        //console.log('pinned notes....',data)
         
         console.log("pinned notes..",this.pinedNotes)
         this.dataService.changeMessage({
@@ -124,11 +127,11 @@ isUnPined(note)
 
   getNoteLabels(){
       this.labelService.getLabel().subscribe(data=>{
-        console.log("labels data...",data)
+        //console.log("labels data...",data)
         this.allLabels = data['data']['details'];
         this.getLabels = this.allLabels.reverse();
         console.log("get labels..",this.getLabels)
-  
+        
       },
       err=>{
         console.log(err)
@@ -140,7 +143,7 @@ isUnPined(note)
         labelId:labelsid
       }
       this.noteService.deleteLabelNote('notes/'+contents.noteId+'/addLabelToNotes/'+contents.labelId+'/remove',contents).subscribe(data=>{
-        console.log('deleteLabelNote..!',data)
+        //console.log('deleteLabelNote..!',data)
         this.deletelabelEvent.emit();
         this.snackBar.open("Label to Note deleted successfully...","close",{duration:3000,});
 
@@ -156,7 +159,7 @@ isUnPined(note)
         userId:this.userid
       }
       this.noteService.removeRemainder('notes/removeReminderNotes',contents).subscribe(data=>{
-        console.log('reamove remainder from note',data)
+        //console.log('reamove remainder from note',data)
         this.dataService.changeMessage({
           data:{},
           type:'removeRemainder'

@@ -32,11 +32,14 @@ export class IconComponent implements OnInit {
   private isDeleted
   ngOnInit() {
     this.getNoteLabels()
-    console.log('Child meassage..!',this.childMessage)
-    this.isarchive=this.childMessage.isArchived;
-    console.log('archive testing..!',this.isarchive)
-    this.isDeleted = this.childMessage.isDeleted
-    console.log('checking isDeleted..!',this.isDeleted)
+    if(this.childMessage){
+      //console.log('Child meassage..!',this.childMessage)
+      this.isarchive=this.childMessage.isArchived;
+      //console.log('archive testing..!',this.isarchive)
+      this.isDeleted = this.childMessage.isDeleted
+      //console.log('checking isDeleted..!',this.isDeleted)
+    }
+    
   }
   search:string;
   
@@ -65,7 +68,7 @@ export class IconComponent implements OnInit {
       isDeleted: true
     }
     this.noteService.deleteNote('notes/trashNotes', contents).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.dataService.changeMessage({
         data:{},
         type:'trash'
@@ -86,7 +89,7 @@ export class IconComponent implements OnInit {
       isDeleted: false
     }
     this.noteService.deleteNote('notes/trashNotes', contents).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.dataService.changeMessage({
         data:{},
         type:'restore'
@@ -106,7 +109,7 @@ export class IconComponent implements OnInit {
       isDeleted: true
     }
     this.noteService.deleteNote('notes/deleteForeverNotes', contents).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.dataService.changeMessage({
         data:{},
         type:'deleteNote'
@@ -133,7 +136,7 @@ export class IconComponent implements OnInit {
     }
     
     this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
-      console.log(data);
+      //console.log(data);
       this.dataService.changeMessage({
         data:{},
         type:'archive'
@@ -157,11 +160,9 @@ export class IconComponent implements OnInit {
       isPined:false
     }
     this.noteService.archiveNote('notes/archiveNotes',contents).subscribe(data=>{
-      console.log(data);
-      this.dataService.changeMessage({
-        data:{},
-        type:'unArchive'
-      })
+      //console.log(data);
+     
+      this.reloadEvent.emit()
 
       this.snackBar.open("Note Updated successfully...","close",{duration:3000,});
     },
@@ -171,10 +172,9 @@ export class IconComponent implements OnInit {
 
   }
   changeColor(color){
-    console.log("note details",color)
+    // console.log("note details",color)
 
-    console.log("note color",color)
-    //console.log('Child message..!',this.childMessage.isArchived)
+    // console.log("note color",color)
     
 
     if (this.childMessage == undefined){
@@ -187,7 +187,7 @@ export class IconComponent implements OnInit {
       color:color
     }
       this.noteService.noteColorChange('notes/changesColorNotes',contents).subscribe(data=>{
-        console.log(data);
+        //console.log(data);
         // this.snackBar.open('Note color changed suceesfully...',"close",{duration:2000,});
       },
       err=>{
@@ -215,7 +215,7 @@ export class IconComponent implements OnInit {
       lableId:labelid
     }
     this.noteService.addLabeltoNote('notes/'+contents.noteId+'/addLabelToNotes/'+contents.lableId+'/add',contents).subscribe(data=>{
-      console.log('addLabel contents',data)
+      //console.log('addLabel contents',data)
       this.reloadEvent.emit()
       this.snackBar.open("Label Added to Note successfully...","close",{duration:3000,});
 
@@ -234,7 +234,7 @@ export class IconComponent implements OnInit {
     }
     console.log("icon date and time values...!",datetimepick)
     this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
-      console.log("remainder date and time...!",data)
+      //console.log("remainder date and time...!",data)
       this.dataService.changeMessage({
         data:{},
         type:'setRemainder'
@@ -316,7 +316,7 @@ export class IconComponent implements OnInit {
           userId:this.userid
         }
         this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
-          console.log("remainder date and time...!",data)
+          //console.log("remainder date and time...!",data)
           this.dataService.changeMessage({
             data:{},
             type:'setRemainderToday'
@@ -335,7 +335,7 @@ export class IconComponent implements OnInit {
       userId:this.userid
     }
     this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
-      console.log("remainder date and time...!",data)
+      //console.log("remainder date and time...!",data)
       this.dataService.changeMessage({
         data:{},
         type:'setRemainderTommorow'
@@ -354,7 +354,7 @@ export class IconComponent implements OnInit {
         userId:this.userid
       }
       this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
-        console.log("remainder date and time...!",data)
+        //console.log("remainder date and time...!",data)
         this.dataService.changeMessage({
           data:{},
           type:'setRemainderNextWeek'

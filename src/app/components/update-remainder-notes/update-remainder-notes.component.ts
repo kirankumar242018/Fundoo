@@ -35,7 +35,7 @@ export class UpdateRemainderNotesComponent implements OnInit {
     }
     console.log("icon date and time values...!",datetimepick)
     this.noteService.addRemainder('notes/addUpdateReminderNotes',contents).subscribe(data=>{
-      console.log("remainder date and time...!",data)
+      //console.log("remainder date and time...!",data)
       this.dataService.changeMessage({
         data:{},
         type:'setRemainder'

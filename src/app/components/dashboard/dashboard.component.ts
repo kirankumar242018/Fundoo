@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
     //this.router.navigate(['dashboard/search'])
     // console.log("search event information..",event)
     this.values = event.target.value
-    console.log("values information...",this.values)
+    //console.log("values information...",this.values)
     this.dataService.changeMessage({
       data:this.values,
       type:'search'})

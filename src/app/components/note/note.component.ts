@@ -23,7 +23,7 @@ export class NoteComponent implements OnInit {
       console.log('data service run');
       
       if (data.type == 'update' || data.type == 'archive' || data.type=='trash' || data.type == 'pin' || 
-      data.type =='unpin' || data.type =='unArchive' || data.type == 'restore' || data.type == 'deleteNote' ) {
+      data.type =='unpin' || data.type == 'restore' || data.type == 'deleteNote' ) {
         this.getAllCard();
       }
      

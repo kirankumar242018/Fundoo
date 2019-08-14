@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NoteService } from '../../service/NoteService/note.service';
+import { DiaplayNoteComponent } from '../diaplay-note/diaplay-note.component';
 
 @Component({
   selector: 'app-archive-note',
@@ -13,17 +14,19 @@ export class ArchiveNoteComponent implements OnInit {
   pinnedNotes=[]
   unPinnedNotes=[]
   constructor(private noteService:NoteService) { }
-
+@ViewChild(DiaplayNoteComponent)childcomponent
   ngOnInit() {
     this.getAllCard()
   }
   
 
   getAllCard() {
+    //console.log("checking viewchild",this.childcomponent.removable)
+
     this.noteService.getNote().subscribe(data => {
       this.notes = data['data']['data'];
       this.get_notes = this.notes.reverse();
-      console.log("archive data...!",data)
+      //console.log("archive data...!",data)
       for (let i = 0; i < this.notes.length; i++) {
         if ((this.get_notes[i]['isArchived'] == true)) {
           this.archiveNotes.push(this.notes[i]);
@@ -33,9 +36,9 @@ export class ArchiveNoteComponent implements OnInit {
       }
      
 
-      console.log("isarchived notes",this.archiveNotes)
+      //console.log("isarchived notes",this.archiveNotes)
 
-      console.log("reverse order", this.get_notes)
+      //console.log("reverse order", this.get_notes)
     }, err => {
       console.log(err);
 

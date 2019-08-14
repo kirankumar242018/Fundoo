@@ -42,10 +42,10 @@ export class CreateLabelComponent implements OnInit {
   
   getNoteLabels(){
     this.labelService.getLabel().subscribe(data=>{
-      console.log("labels data...",data)
+      //console.log("labels data...",data)
       this.allLabels = data['data']['details'];
       this.getLabels = this.allLabels.reverse();
-      console.log("get labels..",this.getLabels)
+      //console.log("get labels..",this.getLabels)
 
     },
     err=>{
@@ -59,7 +59,7 @@ export class CreateLabelComponent implements OnInit {
       userId: this.userId
     }
     this.labelService.addLabel('noteLabels',contents).subscribe(data=>{
-      console.log("label added..!",data)
+      //console.log("label added..!",data)
       this.dataService.changeMessage({
         data:{},
         type:'editlabel'
@@ -80,7 +80,7 @@ export class CreateLabelComponent implements OnInit {
       userId:this.userId
     }
     this.labelService.editLabel('noteLabels/'+labelid+'/updateNoteLabel',contents).subscribe(data=>{
-      console.log("edit label..!",data)
+      //console.log("edit label..!",data)
       this.dataService.changeMessage({
         data:{},
         type:'editlabel'
@@ -98,7 +98,7 @@ export class CreateLabelComponent implements OnInit {
       id:labelid
     }
     this.labelService.deleteLabel('noteLabels/'+contents.id+'/deleteNoteLabel').subscribe(data=>{
-      console.log("delete label..!",data)
+      //console.log("delete label..!",data)
       this.dataService.changeMessage({
         data:{},
         type:'editlabel'

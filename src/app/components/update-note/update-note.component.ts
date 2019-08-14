@@ -35,7 +35,7 @@ export class UpdateNoteComponent implements OnInit {
       "noteId":this.card
     }
     this.noteService.updateNote('notes/updateNotes',contents).subscribe(data=>{
-      console.log(data);
+      //console.log(data);
       this.dataService.changeMessage({
         data:{},
         type:'update'

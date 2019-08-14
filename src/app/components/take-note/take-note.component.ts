@@ -42,7 +42,7 @@ setcolor;
     }
     else{
       this.noteService.addNote('notes/addNotes',form_contents).subscribe(data =>{
-        console.log(data,"note data")
+        //console.log(data,"note data")
         this.refreshEvent.emit()
         this.title.reset()
         this.description.reset()

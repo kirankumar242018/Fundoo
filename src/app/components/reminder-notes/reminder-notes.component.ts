@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { NoteService } from 'src/app/service/NoteService/note.service';
+import { NoteService } from '../../service/NoteService/note.service';
 
 @Component({
   selector: 'app-reminder-notes',
@@ -25,15 +25,15 @@ export class ReminderNotesComponent implements OnInit {
   
   getRemainderNotes(){
     this.noteService.getRemainderNotes().subscribe(data=>{
-      console.log("reaminder notes..!",data)
+      //console.log("reaminder notes..!",data)
       this.notes = data['data']['data']
       this.get_notes = this.notes.reverse()
      
       for(let i=0;i<this.get_notes.length;i++){
         this.remainderNotes.push(this.get_notes[i])
       }
-      console.log('remainder notes..!',this.get_notes)
-      console.log('Testing remainder notes..!',this.remainderNotes)
+      //console.log('remainder notes..!',this.get_notes)
+      //console.log('Testing remainder notes..!',this.remainderNotes)
     })
 
   }

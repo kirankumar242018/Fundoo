@@ -24,7 +24,7 @@ export class TrashNoteComponent implements OnInit {
     this.noteService.getNote().subscribe(data => {
       this.notes = data['data']['data'];
       this.get_notes = this.notes.reverse();
-      console.log("trash notes..!",data);
+      //console.log("trash notes..!",data);
       for (let i = 0; i < this.notes.length; i++) {
         if (this.get_notes[i]['isDeleted'] == true) {
           this.trashNotes.push(this.notes[i]);
@@ -44,9 +44,9 @@ export class TrashNoteComponent implements OnInit {
      
 
       console.log("isdeleted notes",this.trashNotes)
-      console.log("Length of deleted notes",this.trashNotes.length)
+      //console.log("Length of deleted notes",this.trashNotes.length)
 
-      console.log("reverse order", this.get_notes)
+      //console.log("reverse order", this.get_notes)
     }, err => {
       console.log(err);
 

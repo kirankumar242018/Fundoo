@@ -40,7 +40,7 @@ export class SerchNotesComponent implements OnInit {
       //console.log("find data...",data)
       this.all_notes = data['data']['data']
       //console.log('getting all_notes...',this.all_notes)
-      console.log("all the best...",this.card)
+      //console.log("all the best...",this.card)
     },
     err => {
       console.log(err);
@@ -54,7 +54,7 @@ export class SerchNotesComponent implements OnInit {
        
       return data.title.toLowerCase().startsWith(searchnotes.toLowerCase()) || data.description.toLowerCase().startsWith(searchnotes.toLowerCase());
     })
-    console.log("search notes..",this.resultcard)
+    //console.log("search notes..",this.resultcard)
     return this.resultcard
   }
 

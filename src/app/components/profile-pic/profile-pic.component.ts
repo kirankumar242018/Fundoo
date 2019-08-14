@@ -47,7 +47,7 @@ export class ProfilePicComponent implements OnInit {
 
     this.userService.profilePic('user/uploadProfileImage',imagefile).subscribe(data=>{
       localStorage.setItem('image',data['status']['imageUrl']);
-      console.log("profile pic information...!",data)
+     //console.log("profile pic information...!",data)
       this.dataService.changeMessage({
         data:{},
         type:'profile'

@@ -51,24 +51,24 @@ export class CollaboratorsComponent implements OnInit {
 
   // select=String;
   searchUserList(event){
-    console.log("user list .....!",event)
+    //console.log("user list .....!",event)
     this.values=event.target.value
     var contents={
       searchWord:this.values
   }
   this.noteService.searchUserList('user/searchUserList',contents).subscribe(data=>{
-    console.log('user searchList..!',data)
+    //console.log('user searchList..!',data)
 
     this.user_list = data['data'].details
-    console.log('user Array...!',this.user_list)
+    //console.log('user Array...!',this.user_list)
 
   })
 
   }
   addCollaborator(user){
-    console.log("collaborators user data...!",user)
+    //console.log("collaborators user data...!",user)
     this.add_collaborators.push(user)
-    console.log("storing into a array...!",this.add_collaborators)
+    //console.log("storing into a array...!",this.add_collaborators)
 
     var contents={
       id:this.required,
@@ -80,7 +80,7 @@ export class CollaboratorsComponent implements OnInit {
       }
     }
     this.noteService.addCollaborator('notes/'+contents.id+'/AddcollaboratorsNotes',contents.data).subscribe(data=>{
-      console.log("adding collaborators...!",data)
+      //console.log("adding collaborators...!",data)
       this.dataService.changeMessage({
         data:{},
         type:'addCollaborator'
@@ -92,13 +92,13 @@ export class CollaboratorsComponent implements OnInit {
 
   }
   deleteCollaborator(col){
-    console.log("checking pupose...!",col)
+    //console.log("checking pupose...!",col)
     var contents={
       id:this.required,
       collaboratorUserId:col.userId
     }
     this.noteService.deleteNoteCollaborator('notes/'+contents.id+'/removeCollaboratorsNotes/'+contents.collaboratorUserId,contents).subscribe(data=>{
-      console.log('deleteCollaborator....!',data)
+      //console.log('deleteCollaborator....!',data)
       this.dataService.changeMessage({
         data:{},
         type:'deleteCollaborator'
@@ -116,7 +116,7 @@ export class CollaboratorsComponent implements OnInit {
       this.notes = data['data']['data'];
       this.get_notes = this.notes.reverse();
       this.displayNote=[]
-      console.log('get_Notes..',this.get_notes)
+      //console.log('get_Notes..',this.get_notes)
      
       for (let i = 0; i < this.notes.length; i++) {
         if ((this.get_notes[i]['isDeleted'] == false) && (this.get_notes[i]['isArchived'] == false)) {
@@ -126,10 +126,10 @@ export class CollaboratorsComponent implements OnInit {
       }
       
 
-      console.log("isdeleted notes",this.displayNote)
+      //console.log("isdeleted notes",this.displayNote)
       //console.log("is notes",this.displayNote)
 
-      console.log("reverse order", this.get_notes)
+      //console.log("reverse order", this.get_notes)
     }, err => {
       console.log(err);
 
