@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
   }
   changeProfilePic(){
     this.localstorage_image=localStorage.getItem('image');
-    this.imageurl ='http://34.213.106.173/' + this.localstorage_image ;
+    this.imageurl ='http://fundoonotes.incubation.bridgelabz.com/' + this.localstorage_image ;
   }
   logout(){
     this.userService.logout('user/logout',{}).subscribe(data=>{
