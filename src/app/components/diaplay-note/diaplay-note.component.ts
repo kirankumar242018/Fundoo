@@ -19,7 +19,7 @@ export class DiaplayNoteComponent implements OnInit {
   @Output() deletelabelEvent = new EventEmitter<any>();
   @Output() unarchiveEvent = new EventEmitter<any>();
 
-  value;
+  value="row"; // here iam changed to default value value=row to display gridview defaultly
   
   title:string
   description:string
