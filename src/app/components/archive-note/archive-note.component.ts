@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NoteService } from '../../service/NoteService/note.service';
-import { DiaplayNoteComponent } from '../diaplay-note/diaplay-note.component';
 
 @Component({
   selector: 'app-archive-note',
@@ -14,7 +13,6 @@ export class ArchiveNoteComponent implements OnInit {
   pinnedNotes=[]
   unPinnedNotes=[]
   constructor(private noteService:NoteService) { }
-@ViewChild(DiaplayNoteComponent)childcomponent
   ngOnInit() {
     this.getAllCard()
   }

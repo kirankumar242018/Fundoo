@@ -7,7 +7,6 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {formatDate } from '@angular/common';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import{CollaboratorsComponent} from '../../components/collaborators/collaborators.component'
-import { scheduleMicroTask } from '@angular/core/src/util';
 
 @Component({
   selector: 'app-icon',
