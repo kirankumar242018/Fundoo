@@ -34,9 +34,7 @@ export class ArchiveNoteComponent implements OnInit {
       }
      
 
-      //console.log("isarchived notes",this.archiveNotes)
-
-      //console.log("reverse order", this.get_notes)
+      
     }, err => {
       console.log(err);
 
